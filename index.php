@@ -20,8 +20,9 @@
   <body style="bgcolor=red;">
     <!-- .container-fluid -->
     <div class="container-fluid">
-        <!-- navbar menu -->
-        <nav class="navbar navbar-default">
+
+      <!-- navbar menu -->
+      <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -53,10 +54,14 @@
             </div><!--/.nav-collapse -->
           </div><!--/.container-fluid -->
         </nav>
-
+        
       <div class="row">
-        <div class="col-md-3">MENU</div>
-        <div class="col-md-8">.col-md-8 CONTENT</div>
+        <div class="col-md-3">
+          MENU
+        </div>
+        <div class="col-md-8">
+          CONTENT
+        </div>
       </div>
 
     </div>
