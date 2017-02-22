@@ -34,7 +34,7 @@
               <nav class="menus">
                   <ul>
                       <li><a href="#">Home</a></li>
-                      <li><a href="#">About Us</a></li>
+                      <li><a href="#">Abouts Us</a></li>
                       <li><a href="#">Portfolio</a></li>
                   </ul>
               </nav>
