@@ -57,13 +57,13 @@ $(document).ready(function() {
               <a href="#"><small>Design by Metamorphosis Design</small></a>
           </div>
           <div id="menu">
-              <ul>
-                  <li><a href="index.html" class="active">Home</a></li>
-                  <li><a href="blog.html">Blog</a></li>
-                  <li><a href="gallery.html">Gallery</a></li>
-                  <li><a href="about.html">About Us</a></li>
-                  <li><a href="contact.html">Contact Us</a></li>
-              </ul>
+            <ul>
+              <li><a href="index.php" class="active">Home</a></li>
+              <li><a href="blog.php">Blog</a></li>
+              <li><a href="gallery.php">Gallery</a></li>
+              <li><a href="about.php">About Us</a></li>
+              <li><a href="contact.php">Contact Us</a></li>
+            </ul>
           </div>
           <div style="clear: both;"></div>
         </div>
@@ -193,18 +193,17 @@ $(document).ready(function() {
               </div>
               <div id="index_col3">
                 <img src="images/contact.png" alt="" title="" style="float: left; padding-right: 10px; padding-bottom: 4px;" />
-                <h4>Get a Free Quote</h4>
+                <h4>Login Member</h4>
                 <div id="log">
                   <form id="form1" method="post" action="#">
                     <fieldset>
-                      <input id="text1" type="text" name="text1" value="Name" alt=""/><br />
-                      <input id="text2" type="text" name="text2" value="E-mail" alt=""/><br />
-                      <input id="text3" type="text" name="text3" value="Subject" alt=""/><br />
-                      <textarea id="text_mess" name="text_mess" cols="0" rows="0">Message</textarea><br />
-                      <input type="submit" id="login-submit" value="Send"/>
+                      <input id="text1" type="text" name="text1" value="E-mail" alt=""/><br />
+                      <input id="text2" type="text" name="text2" value="Password" alt=""/><br />
+                      <input type="submit" id="login-submit" value="Masuk"/>
                     </fieldset>
                   </form>
                 </div>
+                <div style="text-align: right"><a href="#">Daftar Baru</a></div>
               </div>
               <div style="clear: both"></div>
             </div>
@@ -250,8 +249,8 @@ $(document).ready(function() {
 
 
         <div id="footer_bot">
-            <p>Copyright  2015. <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> </p>
-<!-- Please DO NOT remove the following notice --><div class="foot_lnk"><p>Website Design <a href="http://www.metamorphozis.com/" class="cop_lnk" title="Free Website Templates">Free Website Templates</a></p><!-- end of copyright notice-->
+          <p>Copyright  2015. <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> </p>
+          <div class="foot_lnk"><p>Website Design <a href="#" class="cop_lnk" title="Free Website Templates">Sistem Informasi Salt Water Aquarium</a></p><!-- end of copyright notice-->
         </div>
       </div>
 
