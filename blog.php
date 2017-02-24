@@ -1,13 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>SISWA</title>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <script type="text/javascript" src="lib/jquery-1.3.2.min.js"></script>
-    <link href="styles.css" rel="stylesheet" type="text/css" media="screen" />
-  </head>
+<?php
+include_once 'inc/dbconfig.php';
+include_once 'inc/dbconfig.php';
+include_once 'inc/class.login.php';
+$login = new login($DB_con);
+session_start();
+include_once 'header.php';
+?>
   <body>
     <div id="bg_img">
 
@@ -17,15 +15,7 @@
             <h1><a href="#">metamorph_classified</a></h1>
             <a href="#"><small>Design by Metamorphosis Design</small></a>
           </div>
-          <div id="menu">
-            <ul>
-              <li><a href="index.php">Home</a></li>
-              <li><a href="blog.php" class="active">Blog</a></li>
-              <li><a href="gallery.php">Gallery</a></li>
-              <li><a href="about.php">About Us</a></li>
-              <li><a href="contact.php">Contact Us</a></li>
-            </ul>
-          </div>
+          <?php include_once 'menu.php'; ?>
           <div style="clear: both;"></div>
         </div>
 
@@ -146,45 +136,7 @@
       </div>
       <!-- .site-div -->
 
-      <div id="footer">
-        <div class="foot_col">
-          <div class="foot_col1">
-            <h2>Useful Resources</h2>
-            <div class="foot_pad">
-              <ul class="ls">
-                <li><a href="#">Free Website Templates</a></li>
-                <li><a href="#">Free Flash Templates</a></li>
-                <li><a href="#">Easy Flash Templates</a></li>
-                <li><a href="#">Top Hosting Providers</a></li>
-                <li><a href="#">Free Fonts</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="foot_col2">
-            <h2>Share with Others</h2>
-            <div class="foot_pad">
-              <div class="link1"><a href="#">Subscribe to Blog</a></div>
-              <div class="link2"><a href="#">Be a fan on Facebook</a></div>
-              <div class="link3"><a href="#">RSS Feed</a></div>
-              <div class="link4"><a href="#">Follow us on Twitter</a></div>
-            </div>
-          </div>
-
-          <div class="foot_col3">
-            <h2>Our Address</h2>
-            <div class="foot_pad">
-              <a href="#"><img src="images/location.jpg" alt="" title="" style="padding-top: 5px;"/></a>
-            </div>
-          </div>
-          <div style="clear: both"></div>
-        </div>
-
-
-        <div id="footer_bot">
-          <p>Copyright  2015. <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> </p>
-          <div class="foot_lnk"><p>Website Design <a href="#" class="cop_lnk" title="Free Website Templates">Sistem Informasi Salt Water Aquarium</a></p><!-- end of copyright notice-->
-        </div>
-      </div>
+      <?php include_once 'footer.php'; ?>
 
     </div>
   </body>
