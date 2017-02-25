@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
           </fieldset>
         </form>
       </div>
-      <div style="text-align: right"><a href="#">Daftar Baru</a></div>
+      <div style="text-align: right"><a href="?menu=daftar">Daftar Baru</a></div>
     </div>
     <?php
   }else{

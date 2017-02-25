@@ -150,7 +150,7 @@ body {
 #menu a:hover, #menu .active {
     height: 32px;
     background: url(images/menu_hover.png) repeat-x top;
-}
+}z
 
 /*Main*/
 #main{
