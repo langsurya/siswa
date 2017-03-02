@@ -31,6 +31,7 @@
     <li><a href="media.php?menu=about" class="<?=$d;?>">About Us</a></li>
     <li><a href="media.php?menu=contact" class="<?=$e;?>">Contact Us</a></li>
     <?php if (isset($_SESSION['username'])): ?>
+    <li><a href="media.php?menu=profile&user_id=<?php print($_SESSION['user_id']);?>" class="<?=$e;?>">Profile</a></li>
     <li><a href="keluar.php">Logout</a></li>
     <?php endif; ?>
   </ul>

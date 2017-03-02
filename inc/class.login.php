@@ -23,6 +23,7 @@ class login {
       while ($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
         // if ($count != 0) {
           $_SESSION['username'] = $username;
+          $_SESSION['user_id'] = $row['user_id'];
 					$_SESSION['nama'] = $row['full_name'];
 					$_SESSION['level'] = $row['level'];
         // }

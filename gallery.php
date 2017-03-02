@@ -35,7 +35,13 @@ $(document).ready(function() {
             <h1><a href="#">metamorph_classified</a></h1>
             <a href="#"><small>Design by Metamorphosis Design</small></a>
           </div>
-          <?php include_once 'menu.php'; ?>
+          <?php
+          include_once 'inc/dbconfig.php';
+          include_once 'inc/dbconfig.php';
+          include_once 'inc/class.login.php';
+          $login = new login($DB_con);
+          session_start();
+          include_once 'menu.php'; ?>
           <div style="clear: both;"></div>
         </div>
         <div id="main">

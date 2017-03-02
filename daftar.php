@@ -20,18 +20,35 @@
                 <div class="pad_left">
                   <a href="#">Silahkan Isi Form dibawah ini untuk member Baru </a>
                   <br /><br />
-                  
+
                   <div id="contact_form">
                     <form id="form2" method="post" action="#">
                       <fieldset>
-                        <label for="con_name">Name:</label><br />
-                        <input id="con_name" type="text" name="con_name" value="" alt=""/><br />
+                        <label for="con_fb">Facebook ID:</label><br />
+                        <input id="con_fb" type="text" name="facebook_id" alt=""/><br />
+                        <label for="con_name">Twitter ID:</label><br />
+                        <input id="con_name" type="text" name="twitter_id" alt=""/><br />
                         <label for="con_email">Your Email:</label><br />
-                        <input id="con_email" type="text" name="con_email" value="" alt=""/><br />
-                        <label for="con_website">Your Phone:</label><br />
-                        <input id="con_website" type="text" name="con_website" value="" alt=""/><br />
-                        <label for="con_mess">Message:</label><br />
-                        <textarea id="con_mess" name="con_mess" cols="0" rows="0"></textarea><br />
+                        <input id="con_email" type="text" name="email" value="" alt=""/><br />
+                        <label for="con_name">Username:</label><br />
+                        <input id="con_name" type="text" name="username" alt=""/><br />
+                        <label for="con_name">Password:</label><br />
+                        <input id="con_name" type="text" name="password" alt=""/><br />
+                        <label for="con_name">First Name:</label><br />
+                        <input id="con_name" type="text" name="first_name" alt=""/><br />
+                        <label for="con_name">Last Name:</label><br />
+                        <input id="con_name" type="text" name="last_name" alt=""/><br />
+                        <label for="con_name">Provinci:</label><br />
+                        <input id="con_name" type="text" name="provinci_id" alt=""/><br />
+                        <label for="con_name">City :</label><br />
+                        <input id="con_name" type="text" name="city_id" alt=""/><br />
+                        <label for="con_name">Handphone:</label><br />
+                        <input id="con_name" type="text" name="hp" alt=""/><br />
+                        <label for="con_name">Alamat:</label><br />
+                        <input id="con_name" type="text" name="alamat" alt=""/><br />
+
+                        <label for="con_mess">Bio:</label><br />
+                        <textarea id="con_mess" name="bio" cols="0" rows="0"></textarea><br />
                         <input type="submit" id="contact-submit" value="Submit"/>
                       </fieldset>
                     </form>

@@ -11,6 +11,11 @@ switch ($menu) {
     include_once 'gallery.php';
     break;
 
+
+  case 'profile':
+    include_once 'profile.php';
+    break;
+
   default:
     include_once 'home.php';
     break;
