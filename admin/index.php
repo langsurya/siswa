@@ -1,3 +1,3 @@
 <?php
-header('location:admin.php?menu=home');
+header('location:media.php?menu=home');
 ?>

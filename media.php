@@ -16,6 +16,10 @@ switch ($menu) {
     include_once 'profile.php';
     break;
 
+  case 'adminlogin':
+    include_once 'adminlogin.php';
+    break;
+
   default:
     include_once 'home.php';
     break;

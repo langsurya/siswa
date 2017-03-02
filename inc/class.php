@@ -33,6 +33,10 @@ class ClassSiswa
 		return $editRow;
 	}
 
+  public function create_anggota(){
+    
+  }
+
 }
 
 ?>

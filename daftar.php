@@ -21,8 +21,71 @@
                   <a href="#">Silahkan Isi Form dibawah ini untuk member Baru </a>
                   <br /><br />
 
+                  <?php
+                  include_once 'inc/class.php';
+                  $siswa = new ClassSiswa;
+                  if (isset($_POST['simpan'])) {
+                    $fb = $_POST['facebook_id'];
+                    $twitter = $_POST['twitter_id'];
+                    $email = $_POST['email'];
+                    $username = $_POST['username'];
+                    $password = $_POST['password'];
+                    $first_name = $_POST['first_name'];
+                    $last_name = $_POST['last_name'];
+                    $provinci_id = $_POST['provinci_id'];
+                    $city_id = $_POST['city_id'];
+                    $hp = $_POST['hp'];
+                    $alamat = $_POST['alamat'];
+                    $bio = $_POST['bio'];
+
+                    // Ambil data gambar dari form
+                    echo $nama_file = $_FILES['foto']['name'];
+                    $ukuran_file = $_FILES['foto']['size'];
+                    $tipe_file = $_FILES['foto']['type'];
+                    $tmp_file = $_FILES['foto']['tmp_name'];
+
+                    // set path folder tempat menyimpan gambar
+                    $path = "images/anggota/".$nama_file;
+
+                    if (!empty($nama_file)) {
+
+                      // Cek apakah tipe file yang di upload adalah JPG/JPEG/PNG
+                      if ($tipe_file == "image/jpeg" || $tipe_file == "image/png") {
+                        # jika tipe file JPEG/JPEG/PNG, maka lakukan:
+                        // cek apakah ukuran file sama atau lebih kecil dari 1MB
+                        if ($ukuran_file <= 100000) {
+                          # jika ukuran file kurang dari sama dengan 1MB, lakukan:
+                          if (move_uploaded_file($tmp_file, $path)) { // cek apakah gambar berhasil di upload
+                            # jika gambar berhasil di upload, lakukan:
+                            // proses simpan ke database
+                            $siswa->create_anggota($fb,$twitter,$email,$username,$password,$first_name,$last_name,$provinci_id,$city_id,$hp,$alamat,$bio,$nama_file);
+                            echo "<script> alert('Data Berhasil di tambah') </script>";
+                            echo "<meta http-equiv='refresh' content='0; url=?menu=daftar&msg=success'>";
+                          }else{
+                            // jika gambar gagal di upload
+                            echo "<script> alert('Gambar Gagal di upload') </script>";
+                            echo "<meta http-equiv='refresh' content='0; url=?module=siswa_input'>";
+                          }
+                        }else{
+                          # jika ukuran file kurang dari sama dengan 1MB, lakukan:
+                          echo "<script> alert('Ukuran File Gambar Melebihi 1MB') </script>";
+                          echo "<meta http-equiv='refresh' content='0; url=?module=siswa_input'>";
+                        }
+                      }else{
+                        // tipe file yang di upload bulan JPG/JPEG/PNG
+                        // jika gambar gagal di upload
+                        echo "<script> alert('Gambar Gagal di upload Harus JPG/JPEG/PNG') </script>";
+                        echo "<meta http-equiv='refresh' content='0; url=?module=siswa_input'>";
+                      }
+                    }elseif(!empty($nama_file)) {
+                      $siswa->create_anggota($fb,$twitter,$email,$username,$password,$first_name,$last_name,$provinci_id,$city_id,$hp,$alamat,$bio,$nama_file);
+                      echo "<script> alert('Berhasil Daftar') </script>";
+                    }
+                  }
+                  ?>
+
                   <div id="contact_form">
-                    <form id="form2" method="post" action="#">
+                    <form id="form2" method="post" enctype="multipart/form-data" action="">
                       <fieldset>
                         <label for="con_fb">Facebook ID:</label><br />
                         <input id="con_fb" type="text" name="facebook_id" alt=""/><br />
@@ -49,7 +112,10 @@
 
                         <label for="con_mess">Bio:</label><br />
                         <textarea id="con_mess" name="bio" cols="0" rows="0"></textarea><br />
-                        <input type="submit" id="contact-submit" value="Submit"/>
+                        <label for="con_name">Foto :</label><br/>
+                        <input type="file" name="foto">
+
+                        <input type="submit" id="contact-submit" name="simpan" value="Submit"/>
                       </fieldset>
                     </form>
                   </div>

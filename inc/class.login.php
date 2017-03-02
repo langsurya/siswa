@@ -33,5 +33,31 @@ class login {
     }
 
   }
+
+  public function cekloginadmin($username,$password){
+		try {
+			$sql = "SELECT * FROM as_user WHERE username=:username AND password=:password";
+			$stmt = $this->db->prepare($sql);
+			$stmt->bindparam(':username',$username);
+			$stmt->bindparam(':password',$password);
+			$stmt->execute();
+			$count = $stmt->rowCount();
+			while ($row=$stmt->fetch(PDO::FETCH_ASSOC))
+			{
+				if ($count != 0) {
+					$_SESSION['username'] = $username;
+					$_SESSION['nama'] = $row['nama'];
+					$_SESSION['level'] = $row['level'];
+					if ($row['level']=='admin') {
+					header("Location: admin/");
+					return;
+					}
+				}
+			}
+		} catch (PDOException $e) {
+
+		}
+	}
+
 }
 ?>
