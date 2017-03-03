@@ -52,6 +52,23 @@ class ClassSiswa
 		}
   }
 
+  public function create_kota($province_id,$city_code,$city_name,$status,$created_userid)
+  {
+    try {
+			$stmt = $this->conn->prepare('INSERT INTO as_cities(province_id,city_code,city_name,status,created_userid) VALUES(?,?,?,?,?)');
+			$stmt->bindParam(1,$province_id);
+      $stmt->bindParam(2,$city_code);
+      $stmt->bindParam(3,$city_name);
+			$stmt->bindParam(4,$status);
+      $stmt->bindParam(5,$created_userid);
+
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			return false;
+		}
+  }
+
   public function paging($query,$records_per_page)
 	{
 		$starting_position=0;

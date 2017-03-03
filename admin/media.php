@@ -8,6 +8,9 @@ switch ($menu) {
   case 'provinsi':
     include_once 'provinsi.php';
     break;
+  case 'kota':
+    include_once 'kota.php';
+    break;
   case 'keluar':
     include_once 'keluar.php';
     break;
