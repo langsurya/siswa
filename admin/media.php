@@ -5,11 +5,11 @@ switch ($menu) {
   case 'member':
     include_once 'member.php';
     break;
-  case 'daftar':
-    include_once 'daftar.php';
+  case 'provinsi':
+    include_once 'provinsi.php';
     break;
-  case 'gallery':
-    include_once 'gallery.php';
+  case 'keluar':
+    include_once 'keluar.php';
     break;
 
 

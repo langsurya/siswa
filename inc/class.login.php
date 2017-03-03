@@ -46,6 +46,7 @@ class login {
 			{
 				if ($count != 0) {
 					$_SESSION['username'] = $username;
+          $_SESSION['user_id'] = $row['user_id'];
 					$_SESSION['nama'] = $row['nama'];
 					$_SESSION['level'] = $row['level'];
 					if ($row['level']=='admin') {

@@ -16,7 +16,7 @@ switch ($menu) {
     include_once 'profile.php';
     break;
 
-  case 'adminlogin':
+  case 'admin':
     include_once 'adminlogin.php';
     break;
 

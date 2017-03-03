@@ -20,18 +20,18 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
           <div class="col-sm-12">
-            <h2>Data Member</h2>
+            <h2>Data Provinsi</h2>
             <hr>
           </div>
 
           <div id="loginbox" style="margin-top: ;" class="mainbox col-md-12">
             <div class="panel panel-info">
               <div class="panel-heading">
-                <a class="btn btn-success" href="?menu=siswa_input"><span class="glyphicon glyphicon-plus"></span> Tambah Siswa</a>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-plus"></i>Tambah Data</button>
                 <div class="pull-right col-md-4">
                   <form action="?menu=member_search" method="post">
                     <div class="input-group">
-                      <input type="text" name="cari" class="form-control" placeholder="Ketik Nama Member ..">
+                      <input type="text" name="cari" class="form-control" placeholder="Ketik Nama Provinsi ..">
                       <span class="input-group-btn">
                         <button type="submit" class="btn btn-default" type="button">
                           <span class="glyphicon glyphicon-search"></span>
@@ -49,11 +49,10 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama</th>
-                      <th>Username</th>
-                      <th>Alamat</th>
-                      <th>No Hp</th>
-                      <th>Kota</th>
+                      <th>Provinsi</th>
+                      <th>Status</th>
+                      <th>Created User</th>
+                      <th>Modified User</th>
                       <th style="text-align: center;" colspan="2">Aksi</th>
                     </tr>
                   </thead>
@@ -62,7 +61,7 @@
                     include_once '../inc/class.php';
                     $siswa = new ClassSiswa;
                     $records_per_page=15;
-                    $query = "SELECT * FROM as_members ORDER BY member_id DESC";
+                    $query = "SELECT * FROM as_provinces ORDER BY province_name ASC";
                     $newquery = $siswa->paging($query,$records_per_page);
                     // penomoran halaman data pada halaman
                     if (isset($_GET['page_no'])) {
@@ -80,13 +79,12 @@
                     ?>
                     <tr style="text-align: center;">
                       <td><?=$no;?></td>
-                      <td><?=$value['first_name']." ".$value['last_name'];?></td>
-                      <td><?=$value['username'];?></td>
-                      <td><?=$value['alamat'];?></td>
-                      <td><?=$value['hp'];?></td>
-                      <td><?=$value['city_id'];?></td>
+                      <td><?=$value['province_name'];?></td>
+                      <td><?=$value['status'];?></td>
+                      <td><?=$value['created_userid'];?></td>
+                      <td><?=$value['modified_userid'];?></td>
                       <td>
-                        <a href="?menu=siswa_edit&nis=<?=$value['nis']?>" title="edit"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a href="?menu=siswa_edit&prov_id=<?=$value['province_id']?>" title="edit"><span class="glyphicon glyphicon-edit"></span></a>
                       </td>
                       <td>
                         <a href="?menu=delete&nis=<?=$value['nis']?>" onclick="return confirm('Anda yakin ingin menghapus data Siswa yang bernama <?php echo $value['nama_siswa']; ?>')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
@@ -106,6 +104,17 @@
                     </td>
                   </tr>
                 </table>
+
+                <?php
+                 if (isset($_POST['btn-save'])) {
+                   $province_name = $_POST['province_name'];
+                   $status = $_POST['status'];
+                   $created_userid = $_POST['created_userid'];
+
+                   $siswa->create_provinsi($province_name,$status,$created_userid);
+
+                 }
+                 include_once 'modal.php'; ?>
 
               </div>
             </div>
