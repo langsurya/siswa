@@ -37,6 +37,25 @@ class ClassSiswa
 
   }
 
+  public function create_user($username,$password,$full_name,$email,$phone,$level,$blocked,$created_userid){
+    try {
+			$stmt = $this->conn->prepare('INSERT INTO as_user(username,password,full_name,email,phone,level,blocked,created_userid) VALUES(?,?,?,?,?,?,?,?)');
+			$stmt->bindParam(1,$username);
+			$stmt->bindParam(2,$password);
+      $stmt->bindParam(3,$full_name);
+      $stmt->bindParam(4,$email);
+      $stmt->bindParam(5,$phone);
+      $stmt->bindParam(6,$level);
+      $stmt->bindParam(7,$blocked);
+      $stmt->bindParam(8,$created_userid);
+
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			return false;
+		}
+  }
+
   public function create_provinsi($province_name,$status,$created_userid)
   {
     try {

@@ -2,6 +2,9 @@
 session_start();
 $menu = $_GET['menu'];
 switch ($menu) {
+  case 'users':
+    include_once'user.php';
+    break;
   case 'member':
     include_once 'member.php';
     break;

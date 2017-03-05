@@ -27,9 +27,10 @@
           <div id="loginbox" style="margin-top: ;" class="mainbox col-md-12">
             <div class="panel panel-info">
               <div class="panel-heading">
-                <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-user"></span> </a>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myUser"><i class="glyphicon glyphicon-plus"></i>Tambah User</button>
+                <!-- <a class="btn btn-success" href="?menu=siswa_input"><span class="glyphicon glyphicon-plus"></span> Tambah User</a> -->
                 <div class="pull-right col-md-4">
-                  <form  action="?menu=member_search" method="post">
+                  <form action="?menu=member_search" method="post">
                     <div class="input-group">
                       <input type="text" name="cari" class="form-control" placeholder="Ketik Nama Member ..">
                       <span class="input-group-btn">
@@ -51,9 +52,10 @@
                       <th>No</th>
                       <th>Nama</th>
                       <th>Username</th>
-                      <th>Alamat</th>
+                      <th>Password</th>
                       <th>No Hp</th>
-                      <th>Kota</th>
+                      <th>Email</th>
+                      <th>Level</th>
                       <th style="text-align: center;" colspan="2">Aksi</th>
                     </tr>
                   </thead>
@@ -62,7 +64,7 @@
                     include_once '../inc/class.php';
                     $siswa = new ClassSiswa;
                     $records_per_page=15;
-                    $query = "SELECT * FROM as_members ORDER BY member_id DESC";
+                    $query = "SELECT * FROM as_user";
                     $newquery = $siswa->paging($query,$records_per_page);
                     // penomoran halaman data pada halaman
                     if (isset($_GET['page_no'])) {
@@ -80,16 +82,17 @@
                     ?>
                     <tr style="text-align: center;">
                       <td><?=$no;?></td>
-                      <td><?=$value['first_name']." ".$value['last_name'];?></td>
+                      <td><?=$value['full_name'];?></td>
                       <td><?=$value['username'];?></td>
-                      <td><?=$value['alamat'];?></td>
-                      <td><?=$value['hp'];?></td>
-                      <td><?=$value['city_id'];?></td>
+                      <td><?=md5($value['password']);?></td>
+                      <td><?=$value['phone'];?></td>
+                      <td><?=$value['email'];?></td>
+                      <td><?=$value['level'];?></td>
                       <td>
-                        <a href="?menu=siswa_edit&nis=<?=$value['nis']?>" title="edit"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a href="?menu=user_edit&user_id=<?=$value['user_id']?>" title="edit"><span class="glyphicon glyphicon-edit"></span></a>
                       </td>
                       <td>
-                        <a href="?menu=delete&nis=<?=$value['nis']?>" onclick="return confirm('Anda yakin ingin menghapus data Siswa yang bernama <?php echo $value['nama_siswa']; ?>')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
+                        <a href="?menu=delete&user_id=<?=$value['user_id']?>" onclick="return confirm('Anda yakin ingin menghapus data User yang bernama <?php echo $value['full_name']; ?>')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
                       </td>
                     </tr>
 
@@ -106,6 +109,25 @@
                     </td>
                   </tr>
                 </table>
+
+                <?php
+                if (isset($_POST['btn-save'])) {
+                  $username = $_POST['username'];
+                  $password = $_POST['password'];
+                  $full_name = $_POST['full_name'];
+                  $email = $_POST['email'];
+                  $phone = $_POST['phone'];
+                  $level = $_POST['level'];
+                  $blocked = $_POST['blocked'];
+                  $created_userid = $_POST['created_userid'];
+                  if ($siswa->create_user($username,$password,$full_name,$email,$phone,$level,$blocked,$created_userid)) {
+                    // jika berhasil
+                   echo "<script> alert('Data User Berhasi Di Tambah') </script>";
+                   echo "<meta http-equiv='refresh' content='0; url=?menu=users'>";
+                  }
+
+                }
+                include_once 'modal.php'; ?>
 
               </div>
             </div>

@@ -60,7 +60,7 @@
                     <?php
                     include_once '../inc/class.php';
                     $siswa = new ClassSiswa;
-                    $records_per_page=15;
+                    $records_per_page=10;
                     $query = "SELECT as_provinces.*, as_user.user_id, as_user.full_name FROM as_provinces, as_user WHERE as_provinces.created_userid=as_user.user_id ORDER BY province_name ASC";
                     $newquery = $siswa->paging($query,$records_per_page);
                     // penomoran halaman data pada halaman

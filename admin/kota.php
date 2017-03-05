@@ -61,7 +61,8 @@
                     include_once '../inc/class.php';
                     $siswa = new ClassSiswa;
                     $records_per_page=15;
-                    $query = "SELECT as_cities.*, as_user.user_id, as_user.full_name, as_provinces.province_id, as_provinces.province_name FROM as_cities, as_user, as_provinces WHERE as_cities.province_id=as_provinces.province_id AND as_cities.created_userid=as_user.user_id ORDER BY province_name ASC";
+                    $query = "SELECT as_cities.*, as_user.user_id, as_user.full_name, as_provinces.province_id, as_provinces.province_name
+                    FROM as_cities, as_user, as_provinces WHERE as_cities.province_id=as_provinces.province_id AND as_cities.created_userid=as_user.user_id ORDER BY province_name ASC";
                     $newquery = $siswa->paging($query,$records_per_page);
                     // penomoran halaman data pada halaman
                     if (isset($_GET['page_no'])) {
