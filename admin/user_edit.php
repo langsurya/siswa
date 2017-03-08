@@ -50,7 +50,7 @@
             $id = $_GET['user_id'];
             $table = 'as_user';
             $key = 'user_id';
-  					extract($siswa->getData($id,'as_user','user_id'));
+  					extract($siswa->getData($id,'as_user','user_id',''));
   				}
           ?>
 

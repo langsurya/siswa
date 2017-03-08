@@ -25,10 +25,15 @@ class ClassSiswa
 		return $data;
 	}
 
-  public function getData($id,$table,$key)
+  public function getData($id,$table,$key,$query)
 	{
-		$stmt = $this->conn->prepare("SELECT * FROM $table WHERE $key=:key");
-		$stmt->execute(array(":key"=>$id));
+    if (empty($query)) {
+      $stmt = $this->conn->prepare("SELECT * FROM $table WHERE $key=:key");
+      $stmt->execute(array(":key"=>$id));
+    }else {
+      $stmt = $this->conn->prepare($query);
+      $stmt->execute(array());
+    }
 		$editRow=$stmt->fetch(PDO::FETCH_ASSOC);
 		return $editRow;
 	}
@@ -117,32 +122,42 @@ class ClassSiswa
 		}
 	}
 
-  public function update_member($id,$facebook_id,$twitter_id,$email,$username,$password,$photo,$first_name,$last_name,$provinsi_id,$city_id,$hp,$alamat,$biografi)
+  public function update_member($id,$facebook_id,$twitter_id,$email,$username,$password,$photo,$first_name,$last_name,$province_id,$city_id,$hp,$alamat,$biografi)
   {
     try {
-			if (empty($photo && $password)) {
-				$stmt = $this->conn->prepare("UPDATE as_members SET
-        facebook_id=:facebook_id, twitter_id=:twitter_id, email=:email, username=:username, password=:password, first_name=:first_name, last_name=:last_name, provinsi_id=:provinsi_id, city_id=:city_id, hp=:hp, alamat=:alamat, biografi=:biografi
-        WHERE member_id=:member_id");
-        // $stmt->bindparam(":password",$password);
-        // $stmt->bindparam(":photo",$photo);
+			if (empty($photo)) {
+        if (empty($password)) {
+          $stmt = $this->conn->prepare("UPDATE as_members SET
+          facebook_id=:facebook_id, twitter_id=:twitter_id, email=:email, username=:username, first_name=:first_name, last_name=:last_name, province_id=:province_id, city_id=:city_id, hp=:hp, alamat=:alamat, biografi=:biografi
+          WHERE member_id=:member_id");
+        }else {
+          $stmt = $this->conn->prepare("UPDATE as_members SET
+            facebook_id=:facebook_id, twitter_id=:twitter_id, email=:email, username=:username, password=:password, first_name=:first_name, last_name=:last_name, province_id=:province_id, city_id=:city_id, hp=:hp, alamat=:alamat, biografi=:biografi
+            WHERE member_id=:member_id");
+            $stmt->bindparam(":password",$password);
+            // $stmt->bindparam(":photo",$photo);
+        }
 			}
-      elseif(empty($password)){
-        $stmt = $this->conn->prepare("UPDATE as_members SET
-        facebook_id=:facebook_id, twitter_id=:twitter_id, email=:email, username=:username, photo=:photo, first_name=:first_name, last_name=:last_name, provinsi_id=:provinsi_id, city_id=:city_id, hp=:hp, alamat=:alamat, biografi=:biografi
-        WHERE member_id=:member_id");
-        // $stmt->bindparam(":password",$password);
-        $stmt->bindparam(":photo",$photo);
+      elseif(!empty($photo)){
+        if (empty($password)) {
+          # jika photo di upload namun password kosong...
+          $stmt = $this->conn->prepare("UPDATE as_members SET
+            facebook_id=:facebook_id, twitter_id=:twitter_id, email=:email, username=:username, photo=:photo, first_name=:first_name, last_name=:last_name, province_id=:province_id, city_id=:city_id, hp=:hp, alamat=:alamat, biografi=:biografi
+            WHERE member_id=:member_id");
+            // $stmt->bindparam(":password",$password);
+            $stmt->bindparam(":photo",$photo);
+        }elseif(isset($password)){
+          # jika photo di upload dan pasword tidak kosong maka lakukan..
+          $stmt = $this->conn->prepare("UPDATE as_members SET
+            facebook_id=:facebook_id, twitter_id=:twitter_id, email=:email, username=:username,  password=:password, photo=:photo, first_name=:first_name, last_name=:last_name, province_id=:province_id, city_id=:city_id, hp=:hp, alamat=:alamat, biografi=:biografi
+            WHERE member_id=:member_id");
+            $stmt->bindparam(":password",$password);
+            $stmt->bindparam(":photo",$photo);
+        }
 			}elseif(empty($password&&$photo)){
         $stmt = $this->conn->prepare("UPDATE as_members SET
-        facebook_id=:facebook_id, twitter_id=:twitter_id, email=:email, username=:username, first_name=:first_name, last_name=:last_name, provinsi_id=:provinsi_id, city_id=:city_id, hp=:hp, alamat=:alamat, biografi=:biografi
+        facebook_id=:facebook_id, twitter_id=:twitter_id, email=:email, username=:username, first_name=:first_name, last_name=:last_name, province_id=:province_id, city_id=:city_id, hp=:hp, alamat=:alamat, biografi=:biografi
         WHERE member_id=:member_id");
-      }else{
-        $stmt = $this->conn->prepare("UPDATE as_members SET
-        facebook_id=:facebook_id, twitter_id=:twitter_id, email=:email, username=:username, password=:password, photo=:photo, first_name=:first_name, last_name=:last_name, provinsi_id=:provinsi_id, city_id=:city_id, hp=:hp, alamat=:alamat, biografi=:biografi
-        WHERE member_id=:member_id");
-        $stmt->bindparam(":password",$password);
-        $stmt->bindparam(":photo",$photo);
       }
 
 			$stmt->bindparam(":member_id",$id);
@@ -152,7 +167,7 @@ class ClassSiswa
 			$stmt->bindparam(":username",$username);
 			$stmt->bindparam(":first_name",$first_name);
       $stmt->bindparam(":last_name",$last_name);
-      $stmt->bindparam(":provinsi_id",$provinsi_id);
+      $stmt->bindparam(":province_id",$province_id);
       $stmt->bindparam(":city_id",$city_id);
       $stmt->bindparam(":hp",$hp);
       $stmt->bindparam(":alamat",$alamat);

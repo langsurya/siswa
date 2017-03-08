@@ -31,18 +31,18 @@
             $facebook_id = $_POST['facebook_id'];
             $twitter_id = $_POST['twitter_id'];
             $email = $_POST['email'];
-            echo $username = $_POST['username'];
-            echo $password = $_POST['password'];
+            $username = $_POST['username'];
+            $password = $_POST['password'];
             $first_name = $_POST['first_name'];
             $last_name = $_POST['last_name'];
-            $provinsi_id = $_POST['provinsi_id'];
+            $province_id = $_POST['province_id'];
             $city_id = $_POST['city_id'];
             $hp = $_POST['hp'];
             $alamat = $_POST['alamat'];
             $biografi = $_POST['biografi'];
             $ufoto = $_FILES['photo']['name'];
             if (empty($_FILES['photo']['name'])) {
-              if ($siswa->update_member($id,$facebook_id,$twitter_id,$email,$username,$password,$ufoto,$first_name,$last_name,$provinsi_id,$city_id,$hp,$alamat,$biografi)) {
+              if ($siswa->update_member($id,$facebook_id,$twitter_id,$email,$username,$password,$ufoto,$first_name,$last_name,$province_id,$city_id,$hp,$alamat,$biografi)) {
                 header('location:?menu=member_edit&member_id='.$id.'&msg=success');
               }
             }else{
@@ -66,7 +66,7 @@
           				if (move_uploaded_file($tmp_file, $path)) { // cek apakah gambar berhasil di upload
           					# jika gambar berhasil di upload, lakukan :
           					//  proses simpan ke database
-          					if ($siswa->update_member($id,$facebook_id,$twitter_id,$email,$username,$password,$userpic,$first_name,$last_name,$provinsi_id,$hp,$alamat,$biografi)) {
+          					if ($siswa->update_member($id,$facebook_id,$twitter_id,$email,$username,$password,$userpic,$first_name,$last_name,$province_id,$city_id,$hp,$alamat,$biografi)) {
           						header('location:?menu=member_edit&member_id='.$id.'&msg=success');
           					}
           				}else{
@@ -89,10 +89,18 @@
 
           if (isset($_GET['member_id'])) {
             $id = $_GET['member_id'];
-            $table = 'as_members';
-            $key = 'member_id';
-  					extract($siswa->getData($id,'as_members','member_id'));
+            $query = "SELECT
+            as_members.*, as_cities.city_id, as_cities.city_name as city_nm, as_provinces.province_id, as_provinces.province_name as province_nm
+            FROM as_members, as_cities, as_provinces
+            WHERE as_members.province_id=as_provinces.province_id AND as_members.city_id=as_cities.city_id AND as_members.member_id=".$id;
+  					extract($siswa->getData($id,'as_members','member_id',$query));
   				}
+
+          if (isset($photo)) {
+            $image = "../images/anggota/".$photo;
+          }elseif($photo==""){
+            $image = "../images/pic-05.jpg";
+          }
           ?>
 
           <div id="loginbox" style="margin-top: ;" class="mainbox col-md-12">
@@ -104,7 +112,7 @@
                 <form action="" enctype="multipart/form-data" method="POST">
                   <div class="form-group">
                     <!-- <label for="bio">Bio:</label> -->
-                    <img class="img-rounded" width="150" height="150" src="../images/anggota/<?=$photo;?>" alt="" />
+                    <img class="img-rounded" width="150" height="150" src="<?=$image;?>" alt="" />
                     <input type="file" name="photo">
                   </div>
                   <div class="form-group">
@@ -140,12 +148,40 @@
                     <input type="text" name="last_name" class="form-control" id="last_name" value="<?=$last_name;?>">
                   </div>
                   <div class="form-group">
-                    <label for="provinsi_id">Provinsi:</label>
-                    <input type="text" name="provinsi_id" class="form-control" id="provinsi_id" value="<?=$provinsi_id;?>">
+                    <label for="province_id">Provinsi:</label>
+                    <select class="form-control" name="province_id">
+                      <?php
+                      $query = "SELECT province_id as provinsi_id,province_name as provinsi_nama FROM as_provinces ORDER BY province_name ASC";
+                      foreach ($siswa->showData($query) as $value) {
+                        if ($value['provinsi_id']==$province_id) {
+                          $selected = 'selected';
+                        }else{
+                          $selected ="";
+                        }
+                        ?>
+                          <option value="<?=$value['provinsi_id']?>" <?=$selected?>><?=$value['provinsi_nama'];?></option>
+                        <?php
+                      }
+                      ?>
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="city_id">Kota:</label>
-                    <input type="text" name="city_id" class="form-control" id="city_id" value="<?=$city_id;?>">
+                    <select class="form-control" name="city_id">
+                      <?php
+                      $query = "SELECT city_id as kota_id,city_name as kota_nama FROM as_cities ORDER BY city_name ASC";
+                      foreach ($siswa->showData($query) as $value) {
+                        if ($value['kota_id']==$city_id) {
+                          $selected = 'selected';
+                        }else{
+                          $selected ="";
+                        }
+                        ?>
+                          <option value="<?=$value['kota_id']?>" <?=$selected?>><?=$value['kota_nama'];?></option>
+                        <?php
+                      }
+                      ?>
+                    </select>
                   </div>
 
                   <div class="form-group">
