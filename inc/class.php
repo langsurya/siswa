@@ -73,6 +73,7 @@ class ClassSiswa
 
   public function create_kota($province_id,$city_code,$city_name,$status,$created_userid)
   {
+      $stmt->bindparam(":photo",$photo);
     try {
 			$stmt = $this->conn->prepare('INSERT INTO as_cities(province_id,city_code,city_name,status,created_userid) VALUES(?,?,?,?,?)');
 			$stmt->bindParam(1,$province_id);
@@ -84,6 +85,83 @@ class ClassSiswa
 			$stmt->execute();
 			return true;
 		} catch (PDOException $e) {
+			return false;
+		}
+  }
+
+  public function update_user($id,$username,$password,$full_name,$email,$phone,$level,$blocked)
+	{
+		try {
+			if (empty($password)) {
+				$stmt = $this->conn->prepare("UPDATE as_user SET username=:username, full_name=:full_name, email=:email, phone=:phone, level=:level, blocked=:blocked WHERE user_id=:user_id");
+			}else{
+  			$stmt = $this->conn->prepare("UPDATE as_user SET
+        username=:username, password=:password, full_name=:full_name, email=:email, phone=:phone, level=:level, blocked=:blocked
+        WHERE user_id=:user_id");
+  			$stmt->bindparam(":password",$password);
+			}
+
+			$stmt->bindparam(":user_id",$id);
+			$stmt->bindparam(":username",$username);
+			$stmt->bindparam(":full_name",$full_name);
+			$stmt->bindparam(":email",$email);
+			$stmt->bindparam(":phone",$phone);
+			$stmt->bindparam(":level",$level);
+			$stmt->bindparam(":blocked",$blocked);
+
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+			return false;
+		}
+	}
+
+  public function update_member($id,$facebook_id,$twitter_id,$email,$username,$password,$photo,$first_name,$last_name,$provinsi_id,$city_id,$hp,$alamat,$biografi)
+  {
+    try {
+			if (empty($photo && $password)) {
+				$stmt = $this->conn->prepare("UPDATE as_members SET
+        facebook_id=:facebook_id, twitter_id=:twitter_id, email=:email, username=:username, password=:password, first_name=:first_name, last_name=:last_name, provinsi_id=:provinsi_id, city_id=:city_id, hp=:hp, alamat=:alamat, biografi=:biografi
+        WHERE member_id=:member_id");
+        // $stmt->bindparam(":password",$password);
+        // $stmt->bindparam(":photo",$photo);
+			}
+      elseif(empty($password)){
+        $stmt = $this->conn->prepare("UPDATE as_members SET
+        facebook_id=:facebook_id, twitter_id=:twitter_id, email=:email, username=:username, photo=:photo, first_name=:first_name, last_name=:last_name, provinsi_id=:provinsi_id, city_id=:city_id, hp=:hp, alamat=:alamat, biografi=:biografi
+        WHERE member_id=:member_id");
+        // $stmt->bindparam(":password",$password);
+        $stmt->bindparam(":photo",$photo);
+			}elseif(empty($password&&$photo)){
+        $stmt = $this->conn->prepare("UPDATE as_members SET
+        facebook_id=:facebook_id, twitter_id=:twitter_id, email=:email, username=:username, first_name=:first_name, last_name=:last_name, provinsi_id=:provinsi_id, city_id=:city_id, hp=:hp, alamat=:alamat, biografi=:biografi
+        WHERE member_id=:member_id");
+      }else{
+        $stmt = $this->conn->prepare("UPDATE as_members SET
+        facebook_id=:facebook_id, twitter_id=:twitter_id, email=:email, username=:username, password=:password, photo=:photo, first_name=:first_name, last_name=:last_name, provinsi_id=:provinsi_id, city_id=:city_id, hp=:hp, alamat=:alamat, biografi=:biografi
+        WHERE member_id=:member_id");
+        $stmt->bindparam(":password",$password);
+        $stmt->bindparam(":photo",$photo);
+      }
+
+			$stmt->bindparam(":member_id",$id);
+			$stmt->bindparam(":facebook_id",$facebook_id);
+			$stmt->bindparam(":twitter_id",$twitter_id);
+      $stmt->bindparam(":email",$email);
+			$stmt->bindparam(":username",$username);
+			$stmt->bindparam(":first_name",$first_name);
+      $stmt->bindparam(":last_name",$last_name);
+      $stmt->bindparam(":provinsi_id",$provinsi_id);
+      $stmt->bindparam(":city_id",$city_id);
+      $stmt->bindparam(":hp",$hp);
+      $stmt->bindparam(":alamat",$alamat);
+      $stmt->bindparam(":biografi",$biografi);
+
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			echo $e->getMessage();
 			return false;
 		}
   }

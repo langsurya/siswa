@@ -5,8 +5,14 @@ switch ($menu) {
   case 'users':
     include_once'user.php';
     break;
+  case 'user_edit':
+    include_once 'user_edit.php';
+    break;
   case 'member':
     include_once 'member.php';
+    break;
+  case 'member_edit':
+    include_once 'member_edit.php';
     break;
   case 'provinsi':
     include_once 'provinsi.php';

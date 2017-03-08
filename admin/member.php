@@ -86,10 +86,10 @@
                       <td><?=$value['hp'];?></td>
                       <td><?=$value['city_id'];?></td>
                       <td>
-                        <a href="?menu=siswa_edit&nis=<?=$value['nis']?>" title="edit"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a href="?menu=member_edit&member_id=<?=$value['member_id']?>" title="edit"><span class="glyphicon glyphicon-edit"></span></a>
                       </td>
                       <td>
-                        <a href="?menu=delete&nis=<?=$value['nis']?>" onclick="return confirm('Anda yakin ingin menghapus data Siswa yang bernama <?php echo $value['nama_siswa']; ?>')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
+                        <a href="?menu=delete&member_id=<?=$value['member_id']?>" onclick="return confirm('Anda yakin ingin menghapus data Siswa yang bernama <?php echo $value['nama_siswa']; ?>')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
                       </td>
                     </tr>
 

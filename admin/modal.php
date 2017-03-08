@@ -6,7 +6,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Tambah Data</h4>
+          <h4 class="modal-title">Tambah Provinsi</h4>
         </div>
         <div class="modal-body">
           <form method="post" enctype="multipart/form-data">
@@ -115,7 +115,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Tambah Data Kota</h4>
+              <h4 class="modal-title">Tambah User</h4>
             </div>
             <div class="modal-body">
               <form method="post" action="">

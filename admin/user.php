@@ -20,7 +20,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
           <div class="col-sm-12">
-            <h2>Data Member</h2>
+            <h2>Data User</h2>
             <hr>
           </div>
 
@@ -30,9 +30,9 @@
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myUser"><i class="glyphicon glyphicon-plus"></i>Tambah User</button>
                 <!-- <a class="btn btn-success" href="?menu=siswa_input"><span class="glyphicon glyphicon-plus"></span> Tambah User</a> -->
                 <div class="pull-right col-md-4">
-                  <form action="?menu=member_search" method="post">
+                  <form action="?menu=user_search" method="post">
                     <div class="input-group">
-                      <input type="text" name="cari" class="form-control" placeholder="Ketik Nama Member ..">
+                      <input type="text" name="cari" class="form-control" placeholder="Ketik Nama User ..">
                       <span class="input-group-btn">
                         <button type="submit" class="btn btn-default" type="button">
                           <span class="glyphicon glyphicon-search"></span>
