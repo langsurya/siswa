@@ -7,14 +7,14 @@ class login {
   }
 
   public function ceksession(){
-    if (isset($_SESSION)) {
-      # code...
-    }
+    if (isset($_SESSION['username'])==0) {
+			header('Location: ../');
+		}
   }
 
   public function ceklogin($username,$password){
     try {
-      $sql = "SELECT * FROM as_user WHERE username=:username AND password=:password";
+      $sql = "SELECT * FROM as_members WHERE username=:username AND password=:password";
       $stmt = $this->db->prepare($sql);
 			$stmt->bindparam(':username',$username);
 			$stmt->bindparam(':password',$password);
@@ -23,9 +23,8 @@ class login {
       while ($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
         // if ($count != 0) {
           $_SESSION['username'] = $username;
-          $_SESSION['user_id'] = $row['user_id'];
-					$_SESSION['nama'] = $row['full_name'];
-					$_SESSION['level'] = $row['level'];
+          $_SESSION['member_id'] = $row['member_id'];
+					$_SESSION['nama'] = $row['first_name'] . $row['last_name'];
         // }
       }
     } catch (PDOException $e) {

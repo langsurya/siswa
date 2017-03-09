@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (isset($_SESSION['username'])==0) {
+	header('Location: ../');
+}
 $menu = $_GET['menu'];
 switch ($menu) {
   case 'users':
