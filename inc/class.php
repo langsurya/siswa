@@ -38,6 +38,13 @@ class ClassSiswa
 		return $editRow;
 	}
 
+  public function hapusData($id,$table,$key){
+		$stmt = $this->conn->prepare("DELETE FROM $table WHERE $key=:id");
+		$stmt->bindparam(":id",$id);
+		$stmt->execute();
+		return true;
+	}
+
   public function create_anggota(){
 
   }
@@ -78,7 +85,6 @@ class ClassSiswa
 
   public function create_kota($province_id,$city_code,$city_name,$status,$created_userid)
   {
-      $stmt->bindparam(":photo",$photo);
     try {
 			$stmt = $this->conn->prepare('INSERT INTO as_cities(province_id,city_code,city_name,status,created_userid) VALUES(?,?,?,?,?)');
 			$stmt->bindParam(1,$province_id);
@@ -86,6 +92,22 @@ class ClassSiswa
       $stmt->bindParam(3,$city_name);
 			$stmt->bindParam(4,$status);
       $stmt->bindParam(5,$created_userid);
+
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			return false;
+		}
+  }
+
+  public function createCategories($category_name,$category_ceo,$status,$created_userid)
+  {
+    try {
+			$stmt = $this->conn->prepare('INSERT INTO as_categories(category_name,category_ceo,status,created_userid) VALUES(?,?,?,?)');
+			$stmt->bindParam(1,$category_name);
+			$stmt->bindParam(2,$category_ceo);
+      $stmt->bindParam(3,$status);
+      $stmt->bindParam(4,$created_userid);
 
 			$stmt->execute();
 			return true;
@@ -180,6 +202,66 @@ class ClassSiswa
 			return false;
 		}
   }
+
+  public function updateProvinsi($id,$province_name,$status)
+	{
+		try {
+			$stmt = $this->conn->prepare("UPDATE as_provinces
+        SET province_name=:province_name, status=:status
+        WHERE province_id=:province_id");
+
+			$stmt->bindparam(":province_id",$id);
+			$stmt->bindparam(":province_name",$province_name);
+			$stmt->bindparam(":status",$status);
+
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+			return false;
+		}
+	}
+
+  public function updateKota($id,$province_id,$city_name,$city_code,$status)
+	{
+		try {
+			$stmt = $this->conn->prepare("UPDATE as_cities
+        SET province_id=:province_id, city_code=:city_code, city_name=:city_name, status=:status
+        WHERE city_id=:city_id");
+
+			$stmt->bindparam(":city_id",$id);
+      $stmt->bindparam(":province_id",$province_id);
+			$stmt->bindparam(":city_name",$city_name);
+      $stmt->bindparam(":city_code",$city_code);
+			$stmt->bindparam(":status",$status);
+
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+			return false;
+		}
+	}
+
+  public function updateCategories($id,$category_name,$category_ceo,$status)
+	{
+		try {
+			$stmt = $this->conn->prepare("UPDATE as_categories
+        SET category_name=:category_name, category_ceo=:category_ceo, status=:status
+        WHERE category_id=:category_id");
+
+			$stmt->bindparam(":category_id",$id);
+			$stmt->bindparam(":category_name",$category_name);
+			$stmt->bindparam(":category_ceo",$category_ceo);
+			$stmt->bindparam(":status",$status);
+
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+			return false;
+		}
+	}
 
   public function paging($query,$records_per_page)
 	{

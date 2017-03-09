@@ -18,7 +18,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
           <div class="col-sm-12">
-            <h2>Data User</h2>
+            <h2>Edit User</h2>
             <hr>
           </div>
 
@@ -37,7 +37,9 @@
             $blocked = $_POST['blocked'];
             // if (empty($password)) {
               if ($siswa->update_user($id,$username,$password,$full_name,$email,$phone,$level,$blocked)) {
-                header('location:?menu=user_edit&user_id='.$id.'&msg=success');
+                echo "<script> alert('User Berhasi Di Edit') </script>";
+                echo "<meta http-equiv='refresh' content='1; url=?menu=users&edit=success'>";
+                // header('location:?menu=user_edit&user_id='.$id.'&msg=success');
               }
             // }else{
             //   if ($siswa->update_user($id,$username,$password,$full_name,$email,$phone,$level,$blocked)) {
@@ -80,7 +82,7 @@
                   </div>
                   <div class="form-group">
                     <label for="pwd">New Password:</label>
-                    <input type="password" name="password" class="form-control" id="pwd" placeholder="New Password.." <?=$disabled;?>>
+                    <input type="password" name="password" class="form-control" id="pwd" placeholder="New Password.." >
                   </div>
                   <div class="form-group">
                     <label for="full_name">Full Name:</label>
@@ -117,7 +119,7 @@
                     <?php endif; ?>
                 	</div>
 
-                 <button type="submit" name="edit_user" class="btn btn-success">Submit</button>
+                 <button type="submit" name="edit_user" class="btn btn-success">Update</button>
                  <a class="btn btn-danger" href="?menu=users"><i class="glyphicon glyphicon-backward"></i> Kembali</a>
                  <!-- <button type="submit" name="edit_user" class="btn btn-default">Submit</button> -->
                 </form>

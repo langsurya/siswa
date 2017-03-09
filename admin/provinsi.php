@@ -52,7 +52,6 @@
                       <th>Provinsi</th>
                       <th>Status</th>
                       <th>Created User</th>
-                      <th>Modified User</th>
                       <th style="text-align: center;" colspan="2">Aksi</th>
                     </tr>
                   </thead>
@@ -82,12 +81,11 @@
                       <td><?=$value['province_name'];?></td>
                       <td><?=$value['status'];?></td>
                       <td><?=$value['full_name'];?></td>
-                      <td><?=$value['modified_userid'];?></td>
                       <td>
-                        <a href="?menu=siswa_edit&prov_id=<?=$value['province_id']?>" title="edit"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a href="?menu=provinsi_edit&province_id=<?=$value['province_id']?>" title="edit"><span class="glyphicon glyphicon-edit"></span></a>
                       </td>
                       <td>
-                        <a href="?menu=delete&nis=<?=$value['nis']?>" onclick="return confirm('Anda yakin ingin menghapus data Siswa yang bernama <?php echo $value['nama_siswa']; ?>')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
+                        <a href="?menu=delete&province_id=<?=$value['province_id']?>" onclick="return confirm('Anda yakin ingin menghapus data Provinsi yang bernama <?php echo $value['province_name']; ?> ?')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
                       </td>
                     </tr>
 

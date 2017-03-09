@@ -17,11 +17,27 @@ switch ($menu) {
   case 'provinsi':
     include_once 'provinsi.php';
     break;
+    case 'provinsi_edit':
+      include_once 'provinsi_edit.php';
+      break;
   case 'kota':
     include_once 'kota.php';
     break;
+    case 'kota_edit':
+      include_once 'kota_edit.php';
+      break;
+  case 'kategori':
+    include_once 'kategori.php';
+    break;
+  case 'kategori_edit':
+    include_once 'kategori_edit.php';
+    break;
   case 'keluar':
     include_once 'keluar.php';
+    break;
+
+  case 'delete':
+    include_once 'delete.php';
     break;
 
 

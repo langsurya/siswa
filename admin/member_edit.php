@@ -133,7 +133,7 @@
                   </div>
                   <div class="form-group">
                     <label >Password:</label>
-                    <input type="text" class="form-control" value="<?=$password;?>">
+                    <input type="text" class="form-control" value="<?=$password;?>" disabled>
                   </div>
                   <div class="form-group">
                     <label for="pwd">New Password:</label>

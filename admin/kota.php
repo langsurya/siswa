@@ -29,7 +29,7 @@
                 <div class="pull-right col-md-4">
                   <form action="?menu=member_search" method="post">
                     <div class="input-group">
-                      <input type="text" name="cari" class="form-control" placeholder="Ketik Nama Provinsi ..">
+                      <input type="text" name="cari" class="form-control" placeholder="Ketik Nama Kota ..">
                       <span class="input-group-btn">
                         <button type="submit" class="btn btn-default" type="button">
                           <span class="glyphicon glyphicon-search"></span>
@@ -52,7 +52,6 @@
                       <th>Provinsi</th>
                       <th>Status</th>
                       <th>Created User</th>
-                      <th>Modified User</th>
                       <th style="text-align: center;" colspan="2">Aksi</th>
                     </tr>
                   </thead>
@@ -85,12 +84,11 @@
                       <td><?=$value['province_name'];?></td>
                       <td><?=$value['status'];?></td>
                       <td><?=$value['full_name'];?></td>
-                      <td><?=$value['modified_userid'];?></td>
                       <td>
-                        <a href="?menu=siswa_edit&prov_id=<?=$value['province_id']?>" title="edit"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a href="?menu=kota_edit&city_id=<?=$value['city_id']?>" title="edit"><span class="glyphicon glyphicon-edit"></span></a>
                       </td>
                       <td>
-                        <a href="?menu=delete&nis=<?=$value['nis']?>" onclick="return confirm('Anda yakin ingin menghapus data Siswa yang bernama <?php echo $value['nama_siswa']; ?>')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
+                        <a href="?menu=delete&city_id=<?=$value['city_id']?>" onclick="return confirm('Anda yakin ingin menghapus data Kota <?php echo $value['city_name']; ?>')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
                       </td>
                     </tr>
 

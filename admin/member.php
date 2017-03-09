@@ -89,7 +89,7 @@
                         <a href="?menu=member_edit&member_id=<?=$value['member_id']?>" title="edit"><span class="glyphicon glyphicon-edit"></span></a>
                       </td>
                       <td>
-                        <a href="?menu=delete&member_id=<?=$value['member_id']?>" onclick="return confirm('Anda yakin ingin menghapus data Siswa yang bernama <?php echo $value['nama_siswa']; ?>')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
+                        <a href="?menu=delete&member_id=<?=$value['member_id']?>" onclick="return confirm('Anda yakin ingin menghapus Member yang bernama <?php echo $value['username']; ?>')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
                       </td>
                     </tr>
 
