@@ -45,8 +45,30 @@ class ClassSiswa
 		return true;
 	}
 
-  public function create_anggota(){
+  public function createMembers($facebook_id,$twitter_id,$email,$username,$password,$ufoto,$first_name,$last_name,$province_id,$city_id,$hp,$alamat,$biografi,$created_at){
+    try {
+			$stmt = $this->conn->prepare('INSERT INTO as_members(facebook_id,twitter_id,email,username,password,photo,first_name,last_name,province_id,city_id,hp,alamat,biografi,created_at)
+      VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+			$stmt->bindParam(1,$facebook_id);
+			$stmt->bindParam(2,$twitter_id);
+      $stmt->bindParam(3,$email);
+      $stmt->bindParam(4,$username);
+      $stmt->bindParam(5,$password);
+      $stmt->bindParam(6,$ufoto);
+      $stmt->bindParam(7,$first_name);
+      $stmt->bindParam(8,$last_name);
+      $stmt->bindParam(9,$province_id);
+      $stmt->bindParam(10,$city_id);
+      $stmt->bindParam(11,$hp);
+      $stmt->bindParam(12,$alamat);
+      $stmt->bindParam(13,$biografi);
+      $stmt->bindParam(14,$created_at);
 
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			return false;
+		}
   }
 
   public function create_user($username,$password,$full_name,$email,$phone,$level,$blocked,$created_userid){
