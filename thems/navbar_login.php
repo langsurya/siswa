@@ -3,9 +3,10 @@ if (isset($_POST['login'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
   if ($login->ceklogin($username,$password)) {
-    echo "<script>alert('Anda berhasil Login');</script>";
+    echo "<script>alert('Anda Berhasil Login');</script>";
     echo "<meta http-equiv='refresh' content='0; url=index.php'>";
-  }else{
+  }
+  else{
     echo "<script>alert('Anda Gagal Login');</script>";
     echo "<meta http-equiv='refresh' content='0; url=index.php'>";
   }
@@ -19,7 +20,7 @@ if (isset($_POST['login'])) {
         <div class="span2"><br>
           <form action="" method="POST">
             <div class="control-group">
-              <div class="controls input-icon"> <i class="icon-envelope"></i>
+              <div class="controls input-icon"> <i class="icon-user"></i>
                 <input type="text" name="username" placeholder="username" class="span2">
               </div>
             </div>

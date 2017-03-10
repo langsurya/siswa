@@ -5,6 +5,9 @@ session_start();
 // }
 $menu = $_GET['menu'];
 switch ($menu) {
+  case 'daftar':
+    include_once 'member_daftar.php';
+    break;
   case 'profile':
     include_once'profile.php';
     break;

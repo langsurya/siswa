@@ -38,7 +38,7 @@
 <script src="js/jquery-ui-1.8.16.custom.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/bootstrap-fileupload.js"></script>
-<script src="js/jquery.cleditor.js"></script>
+<!-- <script src="js/jquery.cleditor.js"></script> tinyMCE-->
 <script src="js/jquery.metadata.js"></script>
 <script src="js/jquery.tablesorter.min.js"></script>
 <script src="js/jquery.tablecloth.js"></script>
