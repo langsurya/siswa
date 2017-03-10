@@ -3,7 +3,7 @@
 <div class="navbar navbar-inverse top-nav">
   <div class="navbar-inner">
     <div class="container">
-      <span class="home-link"><a href="index.html" class="icon-home"></a></span><a class="brand" href="./index.html"><img src="images/logo-falgun.png" width="103" height="50" alt="Falgun"></a>
+      <span class="home-link"><a href="index.html" class="icon-home"></a></span><a class="brand" href="./index.html"><img src="images/" width="103" height="50" alt=""></a>
 
       <div class="btn-toolbar pull-right notification-nav">
         <?php if (isset($_SESSION['username'])==true): ?>
