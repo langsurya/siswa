@@ -21,11 +21,12 @@ class login {
 			$stmt->execute();
 			$count = $stmt->rowCount();
       while ($row=$stmt->fetch(PDO::FETCH_ASSOC)) {
-        // if ($count != 0) {
+        if ($count != 0) {
           $_SESSION['username'] = $username;
           $_SESSION['member_id'] = $row['member_id'];
-					$_SESSION['nama'] = $row['first_name'] . $row['last_name'];
-        // }
+					$_SESSION['nama'] = $row['first_name'];
+          return true;
+        }
       }
     } catch (PDOException $e) {
 

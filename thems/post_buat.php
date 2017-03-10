@@ -67,7 +67,11 @@ $(function() {
 
 	<?php
   include_once 'navbar_top.php';
-  include_once 'navbar_l.php';
+  if (isset($_SESSION['username'])==true) {
+		include_once 'navbar_l.php';
+	}else {
+		include_once 'navbar_login.php';
+	}
   ?>
   <!-- ./ -->
 	<div class="main-wrapper">
