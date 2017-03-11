@@ -9,7 +9,9 @@
 	<?php
 	include_once 'inc/dbconfig.php';
 	include_once 'inc/class.login.php';
+  include_once 'inc/class.php';
 	$login = new login($DB_con);
+  $siswa = new ClassSiswa;
   include_once 'member/navbar_top.php';
 	include_once 'navbar_login.php';
 
@@ -26,25 +28,44 @@
 				<li><a href="#" class="icon-home active"></a><span class="divider "><i class="icon-angle-right"></i></span></li>
 			</ul>
 
-
       <div class="row-fluid">
 				<div class="span12">
 					<div id="container">
 
+            <?php
+            $records_per_page=10;
+            $query = "SELECT * FROM as_topics";
+            $newquery = $siswa->paging ($query,$records_per_page);
+            foreach ($siswa->showData($newquery) as $value) {
+            ?>
             <div class="item">
 							<div class="thumbnail">
-								<img alt="300x200" data-src="holder.js/300x200" style="width: 500px; height: 200px;" src="images/gal8.jpg">
+								<img alt="300x200" data-src="holder.js/300x200" style="width: 500px; height: 200px;" src="images/topics/<?=$value['image'];?>">
 								<div class="caption">
-									<h3>Thumbnail label</h3>
+									<h3><a href="#"><?=$value['title'];?></a></h3>
+                    <ul class="author-info" style="list-style:none; margin:0px;">
+                      <li>
+                        <strong> <i class="icon-user"></i> By:</strong> Kamrujaman Shohel
+                        <strong> <i class="icon-calendar"></i></strong> <?=$value['created_date'];?>
+                        <strong> <i class="icon-comment"></i></strong> Tidak ada komentar:
+                      </li>
+                    </ul>
 									<p>
-										Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+										<?=substr($value['description'],0,350)."...";?>
 									</p>
 									<p>
-										<a class="btn btn-primary" href="#">Action</a><a class="btn" href="#">Action</a>
+                    <a class="btn btn-success" href="#">
+                      <i class="icon-book icon-large"></i> Read More <i class="icon-double-angle-right"></i></a>
 									</p>
 								</div>
 							</div>
 						</div>
+            <?php
+            }
+            ?>
+
+
+
 						<div class="item">
 							<div class="thumbnail">
 								<img alt="300x200" data-src="holder.js/300x200" style="width: 300px; height: 200px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAADICAYAAABS39xVAAAELElEQVR4nO3bMW7iQABA0b3/UXwDDkBP75aaK2QrR7NeO4HskvCtVzwJWQOaZr7Gg/3rdru9ART8+ukJANxLsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgTrQE6n09s0Te8ul8vu2PP5/JSxjxh/c/HK8+XnCdZBbC3+aZrezufzX2PXYftfY+81z/PufKdpertery81X16HYB3A5XJ5X5jzPO9eW19fwjAG5KtjHzFGZbl2vV7fr51Op5eaL69DsA5gCcC40McAjAt1GbvecWxdv3fsXmzGsWOc9nY9463cM+dLl2Ad1Lj4x1usvXOdZfwYnEfGbu3oHt3dbAXrWfOlSbAOZn0+NMZq3AntLeolFo+MXax3enu7rj3rndez50uPYB3MuNNZ3wY9OwDrW8O9Q/QtWztCwWJNsA5qawF/RwC+8kjB+J1xvGCxJlgH9i+L+qsBGL93z+5qL1bfNV9aBOvAfuIQe/0c1EfnVx/F6rvmS4tgxd2zsxgX6tYjEOP1rccE7hl7u/15frb+vJ73GKuP/kF85nzpEawD2DrgHv8tHIPxrAcxx3AuYdg7eB9/97OIeHCUkWAdwPrc6LNbsme86vLZ0+vj+L25jp49X5oE60DWi/S7Xn7e282tvzvP86fvEe4djnv5mdtNsIAQwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjIEC8gQLCBDsIAMwQIyBAvIECwgQ7CADMECMgQLyBAsIEOwgAzBAjJ+A8sf5ZmmLjF2AAAAAElFTkSuQmCC">

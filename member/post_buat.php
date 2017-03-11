@@ -66,7 +66,7 @@ $(function() {
   <div class="layout">
 
 	<?php
-  
+
   include_once '../inc/class.php';
   $siswa = new ClassSiswa;
 
@@ -105,7 +105,10 @@ $(function() {
             # jika gambar berhasil di upload, lakukan :
             //  proses simpan ke database
             if ($siswa->createTopics($title,$category_id,$description,$userpic,$member_id,$created_date)) {
-              header('location:?menu=post&msg=success');
+              // header('location:?menu=post&msg=success');
+              // jika gambar gagal di upload
+              echo "<script> alert('Postingan Telah Diterbitkan') </script>";
+              echo "<meta http-equiv='refresh' content='0; url=?menu=post'>";
             }else{
               header('location:?menu=post&msg=gagal');
             }
