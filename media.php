@@ -1,11 +1,12 @@
 <?php
+session_start();
 $menu = $_GET['menu'];
 switch ($menu) {
   case 'blog':
     include_once 'blog.php';
     break;
   case 'daftar':
-    include_once 'daftar.php';
+    include_once 'member_daftar.php';
     break;
   case 'gallery':
     include_once 'gallery.php';

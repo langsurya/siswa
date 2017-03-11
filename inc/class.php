@@ -138,6 +138,25 @@ class ClassSiswa
 		}
   }
 
+  public function createTopics($title,$category_id,$description,$ufoto,$member_id,$created_date)
+  {
+    try {
+			$stmt = $this->conn->prepare('INSERT INTO as_topics(title,category_id,description,image,member_id,created_date)
+      VALUES(?,?,?,?,?,?)');
+			$stmt->bindParam(1,$title);
+			$stmt->bindParam(2,$category_id);
+      $stmt->bindParam(3,$description);
+      $stmt->bindParam(4,$ufoto);
+      $stmt->bindParam(5,$member_id);
+      $stmt->bindParam(6,$created_date);
+
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			return false;
+		}
+  }
+
   public function update_user($id,$username,$password,$full_name,$email,$phone,$level,$blocked)
 	{
 		try {
