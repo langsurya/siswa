@@ -29,12 +29,70 @@ $('textarea.tinymce-simple').tinymce({
   include_once '../inc/class.php';
   $siswa = new ClassSiswa;
 	$login = new login($DB_con);
-  include_once 'navbar_top.php';
-	if (isset($_SESSION['username'])==true) {
-		include_once 'navbar_l.php';
-	}else {
-		include_once 'navbar_login.php';
-	}
+
+  if (isset($_POST['edit_member'])) {
+    $id = $_POST['member_id'];
+    $facebook_id = $_POST['facebook_id'];
+    $twitter_id = $_POST['twitter_id'];
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $province_id = $_POST['province_id'];
+    $city_id = $_POST['city_id'];
+    $hp = $_POST['hp'];
+    $alamat = $_POST['alamat'];
+    $biografi = $_POST['biografi'];
+    $ufoto = $_FILES['photo']['name'];
+    if (empty($_FILES['photo']['name'])) {
+      if ($siswa->update_member($id,$facebook_id,$twitter_id,$email,$username,$password,$ufoto,$first_name,$last_name,$province_id,$city_id,$hp,$alamat,$biografi)) {
+        header('location:?menu=profile&member_id='.$id.'&msg=success');
+      }
+    }else{
+      // Ambil data gambar dari form
+      $nama_file = $_FILES['photo']['name'];
+      $ukuran_file = $_FILES['photo']['size'];
+      $tipe_file = $_FILES['photo']['type'];
+      $tmp_file = $_FILES['photo']['tmp_name'];
+
+      // set path folder tempat menyimpan gambar
+      $imgExt = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
+      $userpic = rand(1000,1000000).".".$imgExt;
+      $path = "../images/anggota/".$userpic;
+      // Cek apakah tipe file yg di upload adalah JPG/JPEG/PNG
+      if ($tipe_file == "image/jpeg" || $tipe_file == "image/png") {
+        # jika tipe file JPG/JPEG/PNG, maka lakukan:
+        // Cek apakah ukuran file sama atau lebih kecil dari 1MB
+        if ($ukuran_file <= 1000000) {
+          # jika ukuran file kurang dari sama dengan 1MB, lakukan :
+          // proses upload
+          if (move_uploaded_file($tmp_file, $path)) { // cek apakah gambar berhasil di upload
+            # jika gambar berhasil di upload, lakukan :
+            $poto_lama = $_POST['poto_lama'];
+            # hapus poto lama
+            unlink('../images/anggota/'.$poto_lama);
+            //  proses simpan ke database
+            if ($siswa->update_member($id,$facebook_id,$twitter_id,$email,$username,$password,$userpic,$first_name,$last_name,$province_id,$city_id,$hp,$alamat,$biografi)) {
+              header('location:?menu=profile&member_id='.$id.'&msg=success');
+            }
+          }else{
+            // jika gambar gagal di upload
+            echo "<script> alert('Data Gagal Di Upload') </script>";
+            echo "<meta http-equiv='refresh' content='0; url=?menu=member_edit&member_id='".$id.">";
+          }
+        }else{
+          // jika ukuran lebih dari 1MB
+          echo "<script> alert('Maaf, Ukuran gambar yang diupload tidak boleh lebih dari 1MB') </script>";
+          echo "<meta http-equiv='refresh' content='0; url=?menu=member_edit&member_id='".$id.">";
+        }
+      }else{
+        //jika tipe file yg diupload bukan JPG/JPEG.PNG, lakukan :
+        echo "<script> alert('Maaf, Tipe gambar yang diupload harus JPG / JPEG / PNG.') </script>";
+        echo "<meta http-equiv='refresh' content='0; url=?menu=member_edit&member_id='".$id.">";
+      }
+    }
+  }
 
   if (isset($_SESSION['member_id'])) {
     $id = $_SESSION['member_id'];
@@ -42,6 +100,8 @@ $('textarea.tinymce-simple').tinymce({
     $key = 'member_id';
     extract($siswa->getData($id,$table,$key,''));
   }
+  include_once 'navbar_top.php';
+	include_once 'navbar_l.php';	
   ?>
   <!-- ./ -->
 	<div class="main-wrapper">
@@ -71,6 +131,7 @@ $('textarea.tinymce-simple').tinymce({
             <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"> <img src="../images/anggota/<?=$photo;?>" alt="img"/> </div>
             <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"> </div>
             <div> <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span>
+              <input type="hidden" name="poto_lama" value="<?=$photo;?>">
               <input name="photo" type="file"/>
               </span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a> </div>
           </div>
@@ -202,9 +263,9 @@ $('textarea.tinymce-simple').tinymce({
               						</div>
               					</div>
 
-                        <input type="hidden" name="member_id" value="">
+                        <input type="hidden" name="member_id" value="<?=$_SESSION['member_id'];?>">
               					<div class="form-actions">
-              						<button name="daftar_member" type="submit" class="btn btn-success">Update</button>
+              						<button name="edit_member" type="submit" class="btn btn-success">Update</button>
               						<button type="button" class="btn">Batal</button>
               					</div>
 
