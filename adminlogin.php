@@ -3,8 +3,6 @@ include_once 'inc/dbconfig.php';
 include_once 'inc/class.login.php';
 $login = new login($DB_con);
 
-session_start();
-
 if (isset($_POST['login'])) {
     echo $username = $_POST['username'];
     echo $password = $_POST['password'];
