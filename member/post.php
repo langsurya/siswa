@@ -42,10 +42,10 @@
 						<table class="stat-table table table-stats table-striped table-sortable table-bordered">
 							<tbody>
 							<tr>
-								<th>Name</th>
+								<th>Title</th>
 								<th>Email</th>
 								<th>Phone</th>
-								<th>Birth Date</th>
+								<th>Tanggal</th>
 							</tr>
 							<tr>
 								<td>William</td>

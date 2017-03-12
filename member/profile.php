@@ -48,6 +48,8 @@ $('textarea.tinymce-simple').tinymce({
     if (empty($_FILES['photo']['name'])) {
       if ($siswa->update_member($id,$facebook_id,$twitter_id,$email,$username,$password,$ufoto,$first_name,$last_name,$province_id,$city_id,$hp,$alamat,$biografi)) {
         header('location:?menu=profile&member_id='.$id.'&msg=success');
+      }else{
+        header('location:?menu=profile&member_id='.$id.'&msg=error');
       }
     }else{
       // Ambil data gambar dari form
@@ -75,6 +77,8 @@ $('textarea.tinymce-simple').tinymce({
             //  proses simpan ke database
             if ($siswa->update_member($id,$facebook_id,$twitter_id,$email,$username,$password,$userpic,$first_name,$last_name,$province_id,$city_id,$hp,$alamat,$biografi)) {
               header('location:?menu=profile&member_id='.$id.'&msg=success');
+            }else{
+              header('location:?menu=profile&member_id='.$id.'&msg=error');
             }
           }else{
             // jika gambar gagal di upload
@@ -101,7 +105,7 @@ $('textarea.tinymce-simple').tinymce({
     extract($siswa->getData($id,$table,$key,''));
   }
   include_once 'navbar_top.php';
-	include_once 'navbar_l.php';	
+	include_once 'navbar_l.php';
   ?>
   <!-- ./ -->
 	<div class="main-wrapper">
@@ -110,11 +114,19 @@ $('textarea.tinymce-simple').tinymce({
         <div class="span12">
           <div class="primary-head">
             <h3 class="page-header">User Profile</h3>
-            <ul class="top-right-toolbar">
-              <li><a data-toggle="dropdown" class="dropdown-toggle blue-violate" href="#" data-original-title="Users"><i class="icon-user"></i></a> </li>
-              <li><a href="#" class="green" data-original-title="Upload"><i class=" icon-upload-alt"></i></a></li>
-              <li><a href="#" class="bondi-blue" data-original-title="Settings"><i class="icon-cogs"></i></a></li>
-            </ul>
+            <?php if (isset($_GET['msg'])): ?>
+              <?php if ($_GET['msg']=="success"): ?>
+                <div class="alert alert-success">
+      						<button type="button" class="close" data-dismiss="alert">×</button>
+      						<i class="icon-ok-sign"></i><strong>Success!</strong> Member Berhasil di perbarui
+      					</div>
+              <?php else: ?>
+                <div class="alert">
+      						<button type="button" class="close" data-dismiss="alert">×</button>
+      						<i class="icon-remove-sign"></i><strong>Warning!</strong> Member Gagal di perbarui
+      					</div>
+              <?php endif; ?>
+            <?php endif; ?>
           </div>
           <ul class="breadcrumb">
             <li><a href="#" class="icon-home"></a><span class="divider "><i class="icon-angle-right"></i></span></li>
