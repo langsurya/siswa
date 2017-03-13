@@ -241,12 +241,12 @@ $('textarea.tinymce-simple').tinymce({
                               $query = "SELECT * FROM as_cities";
                               foreach ($siswa->showData($query) as $value) {
                                 if ($city_id==$value['city_id']) {
-                                  $s = "selected";
+                                  $ss = "selected";
                                 }else{
-                                  $s ="";
+                                  $ss ="";
                                 }
                                 ?>
-                                <option value="<?=$value['city_id']?>" selected="<?=$s;?>"><?=$value['city_name']?></option>
+                                <option value="<?=$value['city_id']?>" <?=$ss;?>><?=$value['city_name']?></option>
                                 <?php
                               }
                               ?>
