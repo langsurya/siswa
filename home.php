@@ -34,7 +34,7 @@
 
             <?php
             $records_per_page=10;
-            $query = "SELECT * FROM as_topics";
+            $query = "SELECT as_topics.*,as_members.member_id,as_members.first_name FROM as_topics,as_members WHERE as_topics.member_id=as_members.member_id ";
             $newquery = $siswa->paging ($query,$records_per_page);
             foreach ($siswa->showData($newquery) as $value) {
             ?>
@@ -45,7 +45,7 @@
 									<h3><a href="#"><?=$value['title'];?></a></h3>
                     <ul class="author-info" style="list-style:none; margin:0px;">
                       <li>
-                        <strong> <i class="icon-user"></i> By:</strong> Kamrujaman Shohel
+                        <strong> <i class="icon-user"></i> By:</strong> <?=$value['first_name'];?>
                         <strong> <i class="icon-calendar"></i></strong> <?=$value['created_date'];?>
                         <strong> <i class="icon-comment"></i></strong> Tidak ada komentar:
                       </li>

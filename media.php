@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (isset($_SESSION['username'])==true) {
+  header('Location: member/');
+}else{
+
+}
 $menu = $_GET['menu'];
 switch ($menu) {
   case 'blog':

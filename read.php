@@ -120,12 +120,12 @@ $('textarea.tinymce-simple').tinymce({
 							<form class="form">
                 <div class="control-group">
       						<div class="controls">
-      							<textarea rows="5" name="komentar" class="tinymce-simple span12"></textarea>
+      							<textarea rows="5" name="komentar" class="tinymce-simple span12">Silahkan Login Untuk Menulis Komentar...</textarea>
       						</div>
       					</div>
                 <div class="control-group">
       						<div class="controls">
-      							<input class="btn btn-success" type="submit" name="Kirim" value="Kirim">
+      							<input class="btn btn-success" type="submit" name="Kirim" value="Kirim" disabled="">
       						</div>
       					</div>
 							</form>

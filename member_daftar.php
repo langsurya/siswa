@@ -103,11 +103,7 @@ $('textarea.tinymce-simple').tinymce({
   }
 
   include_once 'member/navbar_top.php';
-  if (isset($_SESSION['username'])==true) {
-		include_once 'navbar_l.php';
-	}else {
-		include_once 'navbar_login.php';
-	}
+	include_once 'navbar_login.php';
 
   ?>
   <!-- ./ -->
