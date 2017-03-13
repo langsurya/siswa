@@ -15,31 +15,6 @@
 							</div>
 						</div>
 					</div>
-        <?php else: ?>
-          <div class="btn-group">
-						<div class="dropdown">
-							<a class="btn btn-notification dropdown-toggle" data-toggle="dropdown"><i class="icon-signin"></i></a>
-							<div class="dropdown-menu pull-right ">
-
-                  <div class="control-group">
-                    <div class="controls">
-                      <a class="btn btn-success btn-large btn-block" href="?menu=masuk">Masuk</a>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <div class="controls">
-                      <a class="btn btn-primary btn-large btn-block" href="?menu=daftar">Daftar</a>
-                    </div>
-                  </div>
-							</div>
-						</div>
-					</div>
-          <!-- <div class="btn-group">
-            <div class="dropdown">
-              <a class="btn btn-notification" title="Login"><i class="icon-signin"></i></a>
-              <a href="#"></a>
-            </div>
-          </div> -->
         <?php endif; ?>
       </div>
 
