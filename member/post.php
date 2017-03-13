@@ -1,5 +1,5 @@
 <?php include_once 'head.php'; ?>
-<link rel="stylesheet" href="crauser.css" media="screen" title="no title">
+<script src="js/custom.js"></script>
 
 <head>
 <body>
