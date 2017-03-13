@@ -17,6 +17,9 @@ switch ($menu) {
   case 'postCreate':
     include_once'post_buat.php';
     break;
+	case 'read':
+		include_once 'read.php';
+		break;
 
   case 'keluar':
     include_once '../keluar.php';

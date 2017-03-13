@@ -11,6 +11,9 @@ switch ($menu) {
   case 'gallery':
     include_once 'gallery.php';
     break;
+  case 'read':
+    include_once 'read.php';
+    break;
 
 
   case 'profile':

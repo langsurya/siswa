@@ -54,15 +54,16 @@
 										<?=substr($value['description'],0,350)."...";?>
 									</p>
 									<p>
-                    <a class="btn btn-success" href="#">
-                      <i class="icon-book icon-large"></i> Read More <i class="icon-double-angle-right"></i></a>
+                    <a class="btn btn-success" href="?menu=read&topics=<?=$value['topic_id'];?>">
+                      <i class="icon-book icon-large"></i> Read More <i class="icon-double-angle-right"></i>
+                    </a>
 									</p>
 								</div>
 							</div>
 						</div>
             <?php
             }
-            ?>						
+            ?>
 
 
 					</div>
