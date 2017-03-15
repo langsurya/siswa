@@ -36,7 +36,7 @@ if (isset($_POST['login'])) {
               <!-- </div> -->
             </div>
           </form>
-        </div>
+        </div><br><br><br><br><br><br><br><br><br><br>
         <h4 class="side-head">Forms</h4>
         <ul id="nav" class="accordion-nav">
           <li><a href="index.php"><i class=" icon-home"></i> Home </a></li>
@@ -47,6 +47,4 @@ if (isset($_POST['login'])) {
       </div>
     </div>
   </div>
-
-
 </div>

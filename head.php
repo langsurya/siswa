@@ -54,7 +54,7 @@
 <script src="member/js/accordion.nav.js"></script>
 <script src="member/js/jquery.gritter.js"></script>
 <script src="member/js/prettify.js"></script>
-<!-- <script src="member/js/custom.js"></script> -->
-<!--
+<!-- <script src="member/js/custom.js"></script>
+
 <script src="member/js/respond.min.js"></script>
 <script src="member/js/ios-orientationchange-fix.js"></script> -->

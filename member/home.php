@@ -7,6 +7,7 @@
   <div class="layout">
 
 	<?php
+  error_reporting();
 	include_once '../inc/dbconfig.php';
 	include_once '../inc/class.login.php';
   include_once '../inc/class.php';

@@ -1,6 +1,7 @@
 <?php include_once 'head.php'; ?>
-<link rel="stylesheet" href="crauser.css" media="screen" title="no title">
-
+<script src="member/js/custom.js"></script>
+<script src="member/js/respond.min.js"></script>
+<script src="member/js/ios-orientationchange-fix.js"></script>
 <head>
 <body>
 

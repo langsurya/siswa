@@ -3,7 +3,8 @@
 <div class="navbar navbar-inverse top-nav">
   <div class="navbar-inner">
     <div class="container">
-      <span class="home-link"><a href="index.php" class="icon-home"></a></span><a class="brand" href="./index.html"><img src="images/" width="103" height="50" alt=""></a>
+      <span class="home-link"><a href="index.php" class="icon-home"></a></span>
+      
 
       <div class="btn-toolbar pull-right notification-nav">
         <?php if (isset($_SESSION['username'])==true): ?>
