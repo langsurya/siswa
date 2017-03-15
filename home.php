@@ -34,7 +34,7 @@
 
             <?php
             $records_per_page=10;
-            $query = "SELECT as_topics.*,as_members.member_id,as_members.first_name FROM as_topics,as_members WHERE as_topics.member_id=as_members.member_id ";
+            $query = "SELECT as_topics.*,as_members.member_id,as_members.first_name FROM as_topics,as_members WHERE as_topics.member_id=as_members.member_id";
             $newquery = $siswa->paging ($query,$records_per_page);
             foreach ($siswa->showData($newquery) as $value) {
             ?>
@@ -54,7 +54,7 @@
 										<?=substr($value['description'],0,350)."...";?>
 									</p>
 									<p>
-                    <a class="btn btn-success" href="?menu=read&topics=<?=$value['topic_id'];?>">
+                    <a class="btn btn-success" href="?menu=read&topic_id=<?=$value['topic_id'];?>">
                       <i class="icon-book icon-large"></i> Read More <i class="icon-double-angle-right"></i>
                     </a>
 									</p>

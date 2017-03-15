@@ -36,11 +36,12 @@ $('textarea.tinymce-simple').tinymce({
   include_once 'member/navbar_top.php';
 	include_once 'navbar_login.php';
 
-  if (isset($_GET['topics'])) {
-    $id = $_GET['topics'];
+  if (isset($_GET['topic_id'])) {
+    $id = $_GET['topic_id'];
     $table = 'as_topics';
     $key = 'topic_id';
-    extract($siswa->getData($id,$table,$key,''));
+    $query = "SELECT as_topics.*,as_members.member_id,as_members.first_name,as_members.last_name FROM as_topics,as_members WHERE as_topics.member_id=as_members.member_id";
+    extract($siswa->getData($id,$table,$key,$query));
   }
 
   ?>
@@ -58,7 +59,7 @@ $('textarea.tinymce-simple').tinymce({
 				<h3 class="page-header"><?=$title;?> <small>
           <ul class="author-info" style="list-style:none; margin:0px;">
             <li>
-              <strong> <i class="icon-user"></i> By:</strong> Kamrujaman Shohel
+              <strong> <i class="icon-user"></i> By:</strong> <?=$first_name.' '.$last_name;?>
               <strong> <i class="icon-calendar"></i></strong> <?=$created_date;?>
               <strong> <i class="icon-comment"></i></strong> Tidak ada komentar:
             </li>
@@ -76,7 +77,7 @@ $('textarea.tinymce-simple').tinymce({
 								<div class="caption">
 
 									<p>
-                    <?=substr($description,0,150)?>
+                    <?=$description;?>
 									</p>
 								</div>
 							</div>

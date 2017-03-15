@@ -36,18 +36,28 @@ $('textarea.tinymce-simple').tinymce({
   include_once 'navbar_top.php';
 	include_once 'navbar_l.php';
 
-  if (isset($_GET['topics'])) {
-    $id = $_GET['topics'];
+  if (isset($_GET['topic_id'])) {
+    $id = $_GET['topic_id'];
     $table = 'as_topics';
     $key = 'topic_id';
-    extract($siswa->getData($id,$table,$key,''));
+    $query = "SELECT as_topics.*,as_members.member_id,as_members.first_name,as_members.last_name FROM as_topics,as_members WHERE as_topics.member_id=as_members.member_id";
+    extract($siswa->getData($id,$table,$key,$query));
   }
 
   ?>
   <!-- ./ -->
 	<div class="main-wrapper">
 		<div class="container-fluid">
-
+      <?php
+      if (isset($_POST['kirim'])) {
+        $topic_id = $_GET['topic_id'];
+        $member_id = $_SESSION['member_id'];
+        $description = $_POST['description'];
+        if ($siswa->createComment($topic_id,$member_id,$description)) {
+          echo "success";
+        }
+      }
+       ?>
 
       <ul class="breadcrumb">
 				<li><a href="#" class="icon-home active"></a><span class="divider "><i class="icon-angle-right"></i></span></li>
@@ -58,7 +68,7 @@ $('textarea.tinymce-simple').tinymce({
 				<h3 class="page-header"><?=$title;?> <small>
           <ul class="author-info" style="list-style:none; margin:0px;">
             <li>
-              <strong> <i class="icon-user"></i> By:</strong> Kamrujaman Shohel
+              <strong> <i class="icon-user"></i> By:</strong> <?= $first_name.' '.$last_name;?>
               <strong> <i class="icon-calendar"></i></strong> <?=$created_date;?>
               <strong> <i class="icon-comment"></i></strong> Tidak ada komentar:
             </li>
@@ -117,15 +127,15 @@ $('textarea.tinymce-simple').tinymce({
 						</div>
 
 						<div class="widget-container">
-							<form class="form">
+							<form class="form" method="POST" action="">
                 <div class="control-group">
       						<div class="controls">
-      							<textarea rows="5" name="komentar" class="tinymce-simple span12"></textarea>
+      							<textarea rows="5" name="description" class="tinymce-simple span12"> </textarea>
       						</div>
       					</div>
                 <div class="control-group">
       						<div class="controls">
-      							<input class="btn btn-success" type="submit" name="Kirim" value="Kirim">
+      							<input class="btn btn-success" type="submit" name="kirim" value="Kirim">
       						</div>
       					</div>
 							</form>

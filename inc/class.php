@@ -157,6 +157,21 @@ class ClassSiswa
 		}
   }
 
+  public function createComment($topic_id,$member_id,$description)
+  {
+    try {
+			$stmt = $this->conn->prepare('INSERT INTO as_comments(topic_id,member_id,description,created_date) VALUES(?,?,?,NOW())');
+			$stmt->bindParam(1,$topic_id);
+			$stmt->bindParam(2,$member_id);
+      $stmt->bindParam(3,$description);
+
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			return false;
+		}
+  }
+
   public function update_user($id,$username,$password,$full_name,$email,$phone,$level,$blocked)
 	{
 		try {
