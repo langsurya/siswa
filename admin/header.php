@@ -11,5 +11,5 @@
     <!-- Bootstrap -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/css/login.css" rel="stylesheet">
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <!-- <script src="../js/jquery.min.js"></script> -->
+    <!-- <script src="../js/bootstrap.min.js"></script> -->
