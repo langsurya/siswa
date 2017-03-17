@@ -16,6 +16,12 @@ if (isset($_POST['login'])) {
   <div class="responsive-leftbar"> <i class="icon-list"></i> </div>
     <div class="left-secondary-nav">
       <div>
+
+        <h4 class="side-head">Forms</h4>
+        <ul id="nav" class="accordion-nav">
+          <li><a href="index.php"><i class=" icon-home"></i> Home </a></li>
+          <li><a href="?menu=daftar"><i class=" icon-user"></i> Daftar Member </a></li>
+        </ul>
         <h4 class="side-head">Login Member</h4>
         <div class="span2"><br>
           <form action="" method="POST">
@@ -36,14 +42,8 @@ if (isset($_POST['login'])) {
               <!-- </div> -->
             </div>
           </form>
-        </div><br><br><br><br><br><br><br><br><br><br>
-        <h4 class="side-head">Forms</h4>
-        <ul id="nav" class="accordion-nav">
-          <li><a href="index.php"><i class=" icon-home"></i> Home </a></li>
-          <li><a href="?menu=daftar"><i class=" icon-user"></i> Daftar Member </a></li>
-        </ul>
+        </div>
 
-        <h4 class="side-head">Features</h4>
       </div>
     </div>
   </div>
