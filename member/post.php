@@ -15,7 +15,7 @@
 		<div class="container-fluid">
 
       <div class="primary-head">
-				<h3 class="page-header">Falgun - <small>Metro Style Bootstrap Admin Dashboard</small></h3>
+				<h3 class="page-header">My Topics - <small>Wellcome <?=$_SESSION['nama'];?></small></h3>
 				<ul class="top-right-toolbar">
 					<a class="btn btn-success" href="?menu=postCreate">
   					<i class="icon-pencil icon-large"></i> Buat Postingan</a>
@@ -26,10 +26,6 @@
 				<li class="active">Post</li>
 			</ul>
 
-      <?php if (isset($_SESSION['username'])==false): ?>
-
-        <?php //include_once 'texteditor.php'; ?>
-      <?php endif; ?>
 
       <div class="row-fluid">
 				<div class="span12">
@@ -43,22 +39,53 @@
 							<tbody>
 							<tr>
 								<th>Title</th>
-								<th>Email</th>
-								<th>Phone</th>
-								<th>Tanggal</th>
+								<th>Member</th>
+								<th>Description</th>
+								<th>Category</th>
+                <th style="text-align: center;" colspan="2">Aksi</th>
 							</tr>
-							<tr>
-								<td>William</td>
-								<td>sed@ut.com</td>
-								<td>1 88 317 3405-3579</td>
-								<td>February 28th, 2013</td>
+              <?php
+              error_reporting(1);
+              include_once '../inc/class.php';
+              $siswa = new ClassSiswa;
+              $id = $_SESSION['member_id'];
+              $records_per_page=10;
+              $query = "SELECT as_topics.*,
+                        as_members.member_id, as_members.first_name as nama,
+                        as_categories.category_id, as_categories.category_name
+                        FROM as_topics
+                        JOIN as_members ON as_topics.member_id = as_members.member_id
+                        JOIN as_categories ON as_topics.category_id = as_categories.category_id
+                        WHERE as_topics.member_id=$id";
+              $newquery = $siswa->paging($query,$records_per_page);
+              // penomoran halaman data pada halaman
+              if (isset($_GET['page_no'])) {
+                $page = $_GET['page_no'];
+              }
+
+              if (empty($page)) {
+                $posisi = 0;
+                $halaman = 1;
+              }else{
+                $posisi = ($page - 1) * $records_per_page;
+              }
+              $no=1+$posisi;
+              foreach ($siswa->showData($newquery) as $value) {
+              ?>
+              <tr>
+								<td><?=substr($value['title'],0,30)."...";?></td>
+								<td><?=$value['nama'];?></td>
+								<td><?=substr($value['description'],0,150)."...";?></td>
+								<td><?=$value['category_name'];?></td>
+                <td>
+                  <a href="?menu=post&topic_id=<?=$value['topic_id']?>" title="edit"><span class="icon-edit"></span></a>
+                </td>
+                <td>
+                  <a href="?menu=delete&topic_id=<?=$value['topic_id']?>" onclick="return confirm('Anda yakin ingin menghapus data Kota <?php echo $value['title']; ?>')" title="Hapus"><span class="icon-remove"></span></a>
+                </td>
 							</tr>
-							<tr>
-								<td>Armando</td>
-								<td>aliquet.Proin.velit@nectellusNunc.ca</td>
-								<td>1 48 785 9884-8986</td>
-								<td>October 21st, 2012</td>
-							</tr>
+              <?php }
+              ?>
 							</tbody>
 						</table>
 					</div>

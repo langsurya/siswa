@@ -40,7 +40,11 @@ $('textarea.tinymce-simple').tinymce({
     $id = $_GET['topic_id'];
     $table = 'as_topics';
     $key = 'topic_id';
-    $query = "SELECT as_topics.*,as_members.member_id,as_members.first_name,as_members.last_name FROM as_topics,as_members WHERE as_topics.member_id=as_members.member_id";
+    $query = "SELECT as_topics.*,
+    as_members.member_id,as_members.first_name,as_members.last_name
+    FROM as_topics
+    JOIN as_members ON as_topics.member_id = as_members.member_id
+    WHERE as_topics.topic_id=$id";
     extract($siswa->getData($id,$table,$key,$query));
   }
 
@@ -50,7 +54,8 @@ $('textarea.tinymce-simple').tinymce({
 		<div class="container-fluid">
 
       <ul class="breadcrumb">
-				<li><a href="#" class="icon-home active"></a><span class="divider "><i class="icon-angle-right"></i></span></li>
+				<li><a href="#" class="icon-home active"></a>
+          <span class="divider "><i class="icon-angle-right"></i></span></li>
         <li class="active">Artikel</li>
 			</ul>
 
