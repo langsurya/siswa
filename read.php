@@ -40,7 +40,11 @@ $('textarea.tinymce-simple').tinymce({
     $id = $_GET['topic_id'];
     $table = 'as_topics';
     $key = 'topic_id';
-    $query = "SELECT as_topics.*,as_members.member_id,as_members.first_name,as_members.last_name FROM as_topics,as_members WHERE as_topics.member_id=as_members.member_id";
+    $query = "SELECT as_topics.*,
+    as_members.member_id,as_members.first_name,as_members.last_name
+    FROM as_topics
+    JOIN as_members ON as_topics.member_id = as_members.member_id
+    WHERE as_topics.topic_id=$id";
     extract($siswa->getData($id,$table,$key,$query));
   }
 
@@ -96,16 +100,27 @@ $('textarea.tinymce-simple').tinymce({
 
       <div class="row-fluid">
 				<div class="span12">
+          <?php
+          $commentquery = "SELECT as_comments.*,
+                    as_members.member_id, as_members.first_name as nama, as_members.photo,
+                    as_topics.topic_id, as_topics.title
+                    FROM as_comments
+                    JOIN as_topics ON as_comments.topic_id = as_topics.topic_id
+                    JOIN as_members ON as_comments.member_id = as_members.member_id
+                    WHERE as_comments.topic_id=$id";
+          foreach ($siswa->showData($commentquery) as $value) {
+            ?>
 					<div class="media">
-						<a href="#" class="pull-left media-thumb"><img data-src="holder.js/64x64" class="media-object" alt="64x64" style="width: 64px; height: 64px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABWUlEQVR4nO2VMY7CMBBFuf9RfAMfwL17t67nCkM1aHBIASF5QvziSbtLGD0/T7Q3M/N/5kYL0CgALUCjALQAjQLQAjQKQAvQKAAtQKMAtACNAtACNApAC9AoAC1AowC0AI0C0AI0CkAL0HwlQCnlQe998/kYY/ezK2eeEqDW6q01NzNvrXkpxeecm2fekT1j5ikB5pxeSvExxu4zvfeNbHwvDtl7fxzy05lIgFjDkFnF82FW2bhZM3uKcWTm5QHi5kJiXddY5ZBeZfN7/q2ZyAbEDeXfX631KhuHy38/OvPSAOv7mmXzCmdi1eO78Vzc8JGZlwfIK5lvdC9Uvq1aq9daNz8fmYkEMHt+l9d/V69kY5XXW86HeXcmGuCXUQBagEYBaAEaBaAFaBSAFqBRAFqARgFoARoFoAVoFIAWoFEAWoBGAWgBGgWgBWgUgBagUQBagEYBaAGaO387LYipKEKVAAAAAElFTkSuQmCC"></a>
+						<a href="#" class="pull-left media-thumb"><img data-src="holder.js/64x64" class="media-object" alt="64x64" style="width: 64px; height: 64px;" src="images/anggota/<?=$value['photo'];?>"></a>
 						<div class="media-body ">
-							<h4 class="media-heading">Media heading</h4>
+							<h4 class="media-heading"><?=$value['nama'];?></h4>
 							<p>
-								 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+								 <?=$value['description'];?>
 							</p>
 						</div>
 					</div>
-				</div>
+        <?php  }
+        ?>
 
 				</div>
 			</div><br>

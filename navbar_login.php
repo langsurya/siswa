@@ -19,8 +19,10 @@ if (isset($_POST['login'])) {
 
         <h4 class="side-head">Forms</h4>
         <ul id="nav" class="accordion-nav">
-          <li><a href="index.php"><i class=" icon-home"></i> Home </a></li>
-          <li><a href="?menu=daftar"><i class=" icon-user"></i> Daftar Member </a></li>
+          <li><a href="index.php"><i class="icon-home"></i> Home </a></li>
+          <li><a href="?menu=daftar"><i class="icon-user"></i> Daftar Member </a></li>
+          <li><a href="?menu=gallery"><i class="icon-picture"></i> Gallery </a></li>
+          <li><a href="?menu=about"><i class="icon-file"></i> About </a></li>
         </ul>
         <h4 class="side-head">Login Member</h4>
         <div class="span2"><br>
