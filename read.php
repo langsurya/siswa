@@ -28,6 +28,7 @@ $('textarea.tinymce-simple').tinymce({
   <div class="layout">
 
 	<?php
+  error_reporting(1);
 	include_once 'inc/dbconfig.php';
 	include_once 'inc/class.login.php';
   include_once 'inc/class.php';

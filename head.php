@@ -26,7 +26,7 @@
 <link rel="stylesheet" type="text/css" href="member/css/ie/ie9.css" />
 <![endif]-->
 <link href="member/css/prettify.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+<!-- <link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'> -->
 <!--fav and touch icons -->
 <link rel="shortcut icon" href="ico/favicon.ico">
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
@@ -39,7 +39,7 @@
 <script src="member/js/bootstrap.js"></script>
 <script src="member/js/bootstrap-fileupload.js"></script>
 <!-- <script src="member/js/jquery.cleditor.js"></script> tinyMCE-->
-<script src="member/js/jquery.metadata.js"></script>
+<!-- <script src="member/js/jquery.metadata.js"></script>
 <script src="member/js/jquery.tablesorter.min.js"></script>
 <script src="member/js/jquery.tablecloth.js"></script>
 <script src="member/js/jquery.flot.js"></script>
@@ -53,7 +53,7 @@
 <script src="member/js/jquery.collapsible.js"></script>
 <script src="member/js/accordion.nav.js"></script>
 <script src="member/js/jquery.gritter.js"></script>
-<script src="member/js/prettify.js"></script>
+<script src="member/js/prettify.js"></script> -->
 <!-- <script src="member/js/custom.js"></script>
 
 <script src="member/js/respond.min.js"></script>

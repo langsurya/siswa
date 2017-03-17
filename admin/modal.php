@@ -222,8 +222,8 @@
   </div>
 
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     $(document).ready(function(){
       $("#tgl").datepicker({dateFormat : 'yy/mm/dd'});
     });
-  </script>
+  </script> -->
