@@ -91,14 +91,13 @@ $(function(){
 							<div class="thumbnail">
 								<img alt="300x200" data-src="holder.js/300x200" style="width: 300px; height: 200px;" src="images/topics/<?=$value['image']?>">
 								<div class="caption">
-									<h3>Thumbnail label</h3>
+									<h5><?=$value['title'];?></h5>
 									<p>
-										Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+										<?=substr($value['description'],0,100)."...";?>
 									</p>
 									<p>
-										<a class="btn btn-primary" href="#">Action</a>
-                    <!-- <a class="btn" href="#">Action</a> -->
-                    <button class="alert-box btn">Alert</button>
+										<!-- <a class="btn btn-primary" href="#">Action</a>
+                    <button class="alert-box btn">Alert</button> -->
 									</p>
 								</div>
 							</div>
