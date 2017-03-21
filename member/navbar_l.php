@@ -16,9 +16,8 @@
         </ul>
         <h4 class="side-head">Kategori</h4>
         <ul id="nav" class="accordion-nav">
-          <li><a href="?menu=home"><i class="icon-th"></i> Form Components </a></li>
-          <li><a href="?menu=home"><i class="icon-external-link"></i> Wizard </a></li>
-          <li><a href="?menu=home"><i class="icon-pencil"></i> WYSIWYG editor </a></li>
+          <li><a href="?menu=gallery"><i class="icon-picture"></i> Gallery </a></li>
+          <li><a href="?menu=about"><i class="icon-file"></i> About </a></li>
         </ul>
       </div>
     </div>

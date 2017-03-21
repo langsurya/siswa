@@ -21,6 +21,10 @@ switch ($menu) {
 		include_once 'read.php';
 		break;
 
+	case 'gallery':
+		include_once 'gallery.php';
+		break;
+
   case 'keluar':
     include_once '../keluar.php';
     break;
