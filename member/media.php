@@ -17,6 +17,9 @@ switch ($menu) {
   case 'postCreate':
     include_once'post_buat.php';
     break;
+	case 'postEdit':
+		include_once 'post_edit.php';
+		break;
 	case 'read':
 		include_once 'read.php';
 		break;
@@ -28,6 +31,9 @@ switch ($menu) {
   case 'keluar':
     include_once '../keluar.php';
     break;
+	case 'delete':
+		include_once 'delete.php';
+		break;
 
 
   default:
