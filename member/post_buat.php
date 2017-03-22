@@ -66,7 +66,8 @@ $(function() {
   <div class="layout">
 
 	<?php
-
+  include_once 'navbar_top.php';
+  include_once 'navbar_l.php';
   include_once '../inc/class.php';
   $siswa = new ClassSiswa;
 
@@ -81,7 +82,9 @@ $(function() {
 
     if (empty($_FILES['image']['name'])) {
       if ($siswa->createTopics($title,$category_id,$description,$ufoto,$member_id,$created_date)) {
-        header('location:?menu=post&msg=success');
+        echo "<script> alert('Postingan Telah Diterbitkan') </script>";
+        echo "<meta http-equiv='refresh' content='0; url=?menu=post'>";
+        // header('location:?menu=post&msg=success');
       }
     }else{
       // Ambil data gambar dari form
@@ -130,12 +133,6 @@ $(function() {
     }
   }
 
-  include_once 'navbar_top.php';
-  if (isset($_SESSION['username'])==true) {
-		include_once 'navbar_l.php';
-	}else {
-		include_once 'navbar_login.php';
-	}
   ?>
   <!-- ./ -->
 	<div class="main-wrapper">
@@ -209,7 +206,7 @@ $(function() {
       						<label class="control-label">Tanggal</label>
       						<div class="controls">
       							<div id="datetimepicker1" class="input-append date ">
-      								<input name="created_date" data-format="yyyy/MM/dd hh:mm:ss" type="text"><span class="add-on "><i data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i></span>
+      								<input name="created_date" data-format="yyyy/MM/dd hh:mm:ss" type="text" required><span class="add-on "><i data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-calendar"></i></span>
       							</div>
       						</div>
       					</div>

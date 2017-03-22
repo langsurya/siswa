@@ -78,7 +78,7 @@
 								<td><?=substr($value['description'],0,150)."...";?></td>
 								<td><?=$value['category_name'];?></td>
                 <td>
-                  <a href="?menu=post&topic_id=<?=$value['topic_id']?>" title="edit"><span class="icon-edit"></span></a>
+                  <a href="?menu=postEdit&topic_id=<?=$value['topic_id']?>" title="edit"><span class="icon-edit"></span></a>
                 </td>
                 <td>
                   <a href="?menu=delete&topic_id=<?=$value['topic_id']?>" onclick="return confirm('Anda yakin ingin menghapus data Kota <?php echo $value['title']; ?>')" title="Hapus"><span class="icon-remove"></span></a>
