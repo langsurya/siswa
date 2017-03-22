@@ -8,6 +8,11 @@ class ClassSiswa
 	private $user = "root";
 	private $db = "db_siswa";
 	private $pass = "";
+  // untk server
+  // private $host = "localhost";
+	// private $user = "id1079935_root";
+	// private $db = "id1079935_db_siswa";
+	// private $pass = "root123";
 
   protected $conn;
 
