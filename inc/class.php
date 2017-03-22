@@ -319,6 +319,35 @@ class ClassSiswa
 		}
 	}
 
+  public function editTopics($topic_id,$title,$category_id,$description,$image,$modified_date)
+  {
+    try {
+			if (empty($image)) {
+        $stmt = $this->conn->prepare("UPDATE as_topics SET
+        title=:title, category_id=:category_id, description=:description, modified_date=:modified_date
+        WHERE topic_id=:topic_id");
+			}
+      elseif(!empty($image)){
+        $stmt = $this->conn->prepare("UPDATE as_topics SET
+        title=:title, category_id=:category_id, description=:description, image=:image, modified_date=:modified_date
+        WHERE topic_id=:topic_id");
+        $stmt->bindparam(":image",$image);
+			}
+
+			$stmt->bindparam(":topic_id",$topic_id);
+			$stmt->bindparam(":title",$title);
+			$stmt->bindparam(":category_id",$category_id);
+      $stmt->bindparam(":description",$description);
+			$stmt->bindparam(":modified_date",$modified_date);
+
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+			return false;
+		}
+  }
+
   public function paging($query,$records_per_page)
 	{
 		$starting_position=0;
