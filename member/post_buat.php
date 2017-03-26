@@ -66,10 +66,9 @@ $(function() {
   <div class="layout">
 
 	<?php
+  
   include_once 'navbar_top.php';
   include_once 'navbar_l.php';
-  include_once '../inc/class.php';
-  $siswa = new ClassSiswa;
 
   if (isset($_POST['save-topics'])) {
     $title = $_POST['title'];

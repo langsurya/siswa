@@ -1,5 +1,11 @@
 <?php
+// error_reporting(1);
 session_start();
+include_once '../inc/dbconfig.php';
+include_once '../inc/class.login.php';
+include_once '../inc/class.php';
+$login = new login($DB_con);
+$siswa = new ClassSiswa;
 if (isset($_SESSION['username'])==0) {
 	header('Location: ../index.php');
 }
@@ -22,6 +28,9 @@ switch ($menu) {
 		break;
 	case 'read':
 		include_once 'read.php';
+		break;
+	case 'chat':
+		include_once 'chatting_forum.php';
 		break;
 
 	case 'gallery':

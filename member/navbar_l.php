@@ -13,6 +13,7 @@
           <li><a href="?menu=profile"><i class="icon-user"></i> My Profile</a></li>
           <li><a href="?menu=post"><i class="icon-list-alt"></i> My Post <span class="notify-tip">50</span></a></li>
           <li><a href="?menu=hitung-volume"><i class="icon-tint"></i> Hitung Volume Air</a></li>
+          <li><a href="?menu=chat"><i class="icon-comment"></i> Chatting</a></li>
         </ul>
         <h4 class="side-head">Kategori</h4>
         <ul id="nav" class="accordion-nav">

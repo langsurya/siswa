@@ -67,9 +67,6 @@ $(function() {
 
 	<?php
 
-  include_once '../inc/class.php';
-  $siswa = new ClassSiswa;
-
   if (isset($_POST['ubah-topics'])) {
     $topic_id = $_GET['topic_id'];
     $title = $_POST['title'];

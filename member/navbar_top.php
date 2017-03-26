@@ -4,7 +4,7 @@
   <div class="navbar-inner">
     <div class="container">
       <span class="home-link"><a href="index.php" class="icon-home"></a></span>
-      
+
 
       <div class="btn-toolbar pull-right notification-nav">
         <?php if (isset($_SESSION['username'])==true): ?>

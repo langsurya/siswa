@@ -24,11 +24,6 @@ $('textarea.tinymce-simple').tinymce({
 <div class="layout">
 
 	<?php
-	include_once '../inc/dbconfig.php';
-	include_once '../inc/class.login.php';
-  include_once '../inc/class.php';
-  $siswa = new ClassSiswa;
-	$login = new login($DB_con);
 
   if (isset($_POST['edit_member'])) {
     $id = $_POST['member_id'];
