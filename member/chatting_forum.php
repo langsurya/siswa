@@ -60,9 +60,11 @@ $(function () {
 								<ul class="nav nav-tabs" id="chat-tab">
                   <li class="active"><a href="#user"><span class="user-online"></span><i class="icon-user"></i> Online User </a></li>
                   <?php
+                  $records_per_page=11;
                   $q_member = "SELECT member_id, username, status
                   FROM as_members ORDER BY status ASC";
-                  foreach ($siswa->showData($q_member) as $member) {
+                  $newquery = $siswa->paging ($q_member,$records_per_page);
+                  foreach ($siswa->showData($newquery) as $member) {
                     if ($member['member_id']==$_SESSION['member_id']) { ?>
 
                     <?php }else {
