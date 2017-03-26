@@ -177,6 +177,21 @@ class ClassSiswa
 		}
   }
 
+  public function createMessage($msgfrom,$message)
+  {
+    try {
+			$stmt = $this->conn->prepare('INSERT INTO as_message(msgfrom,message,created_date) VALUES(?,?,NOW())');
+			$stmt->bindParam(1,$msgfrom);
+      $stmt->bindParam(2,$message);
+      // $stmt->bindParam(4,$created_date);
+
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			return false;
+		}
+  }
+
   public function update_user($id,$username,$password,$full_name,$email,$phone,$level,$blocked)
 	{
 		try {
@@ -314,6 +329,24 @@ class ClassSiswa
 			$stmt->bindparam(":category_id",$id);
 			$stmt->bindparam(":category_name",$category_name);
 			$stmt->bindparam(":category_ceo",$category_ceo);
+			$stmt->bindparam(":status",$status);
+
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+			return false;
+		}
+	}
+
+  public function updateStatusM($id,$status)
+	{
+		try {
+			$stmt = $this->conn->prepare("UPDATE as_members
+        SET status=:status
+        WHERE member_id=:member_id");
+
+			$stmt->bindparam(":member_id",$id);
 			$stmt->bindparam(":status",$status);
 
 			$stmt->execute();
