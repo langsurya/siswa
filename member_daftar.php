@@ -36,9 +36,6 @@ $('textarea.tinymce-simple').tinymce({
 
 	<?php
 
-  include_once 'inc/class.php';
-  $siswa = new ClassSiswa;
-
   if (isset($_POST['daftar_member'])) {
     $facebook_id = $_POST['facebook_id'];
     $twitter_id = $_POST['twitter_id'];
@@ -80,7 +77,9 @@ $('textarea.tinymce-simple').tinymce({
             # jika gambar berhasil di upload, lakukan :
             //  proses simpan ke database
             if ($siswa->createMembers($facebook_id,$twitter_id,$email,$username,$password,$userpic,$first_name,$last_name,$province_id,$city_id,$hp,$alamat,$biografi,$created_at)) {
-              header('location:?menu=home&msg=success');
+              echo "<script> alert('Berhasil Registrasi') </script>";
+              echo "<meta http-equiv='refresh' content='0; url=?menu=home&msg=success'>";
+              // header('location:?menu=home&msg=success');
             }else{
               header('location:?menu=home&msg=gagal');
             }
@@ -101,10 +100,8 @@ $('textarea.tinymce-simple').tinymce({
       }
     }
   }
-
   include_once 'member/navbar_top.php';
 	include_once 'navbar_login.php';
-
   ?>
   <!-- ./ -->
 	<div class="main-wrapper">

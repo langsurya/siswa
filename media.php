@@ -1,5 +1,10 @@
 <?php
 session_start();
+include_once 'inc/dbconfig.php';
+include_once 'inc/class.login.php';
+include_once 'inc/class.php';
+$login = new login($DB_con);
+$siswa = new ClassSiswa;
 if (isset($_SESSION['username'])==true) {
   header('Location: member/');
 }else{

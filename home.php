@@ -7,12 +7,7 @@
 
   <div class="layout">
 
-	<?php
-	include_once 'inc/dbconfig.php';
-	include_once 'inc/class.login.php';
-  include_once 'inc/class.php';
-	$login = new login($DB_con);
-  $siswa = new ClassSiswa;
+	<?php	
   include_once 'member/navbar_top.php';
 	include_once 'navbar_login.php';
 

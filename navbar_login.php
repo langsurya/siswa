@@ -3,8 +3,12 @@ if (isset($_POST['login'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
   if ($login->ceklogin($username,$password)) {
-    echo "<script>alert('Anda Berhasil Login');</script>";
-    echo "<meta http-equiv='refresh' content='0; url=member/index.php'>";
+    $id = $_SESSION['member_id'];
+    $status = "on";
+    if ($siswa->updateStatusM($id,$status)) {
+      echo "<script>alert('Anda Berhasil Login');</script>";
+      echo "<meta http-equiv='refresh' content='0; url=member/index.php'>";
+    }
   }
   else{
     echo "<script>alert('Anda Gagal Login');</script>";
@@ -22,7 +26,8 @@ if (isset($_POST['login'])) {
           <li><a href="index.php"><i class="icon-home"></i> Home </a></li>
           <li><a href="?menu=daftar"><i class="icon-user"></i> Daftar Member </a></li>
           <li><a href="?menu=gallery"><i class="icon-picture"></i> Gallery </a></li>
-          <li><a href="?menu=about"><i class="icon-file"></i> About </a></li>
+          <li><a href="?menu=calculator"><i class="icon-tint"></i> Calculator </a></li>
+          <li><a href="?menu=contact"><i class="icon-envelope"></i> Contact </a></li>
         </ul>
         <h4 class="side-head">Login Member</h4>
         <div class="span2"><br>
