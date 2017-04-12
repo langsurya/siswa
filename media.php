@@ -24,6 +24,9 @@ switch ($menu) {
   case 'read':
     include_once 'read.php';
     break;
+  case 'calculator':
+    include_once 'calculator.php';
+    break;
 
 
   case 'profile':

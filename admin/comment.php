@@ -9,8 +9,6 @@
   <body>
     <?php include_once 'navbar.php'; ?>
 
-
-
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
@@ -20,7 +18,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
           <div class="col-sm-12">
-            <h2>Data Topik</h2>
+            <h2>Comment</h2>
             <hr>
           </div>
 
@@ -88,9 +86,7 @@
                       <td><?=$value['nama'];?></td>
                       <td><?=substr($value['description'],0,150)."...";?></td>
                       <td><?=$value['created_date'];?></td>
-                      <td>
-                        <a href="?menu=comment_edit&comment_id=<?=$value['comment_id']?>" title="edit"><span class="glyphicon glyphicon-edit"></span></a>
-                      </td>
+                      
                       <td>
                         <a href="?menu=delete&comment_id=<?=$value['comment_id']?>" onclick="return confirm('Anda yakin ingin menghapus data Comment <?php echo $value['title']; ?>')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
                       </td>

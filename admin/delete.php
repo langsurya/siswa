@@ -25,5 +25,9 @@ elseif (!empty($_GET['comment_id'])) {
 	$obj->hapusData($_GET['comment_id'],'as_comments','comment_id');
 	header('location:?menu=comment&msg=delete');
 }
+elseif (!empty($_GET['message_id'])) {
+	$obj->hapusData($_GET['message_id'],'as_message','message_id');
+	header('location:?menu=chatting&msg=delete');
+}
 
 ?>

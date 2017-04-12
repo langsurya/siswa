@@ -9,8 +9,6 @@
   <body>
     <?php include_once 'navbar.php'; ?>
 
-
-
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
@@ -88,9 +86,7 @@
                       <td><?=$value['category_name'];?></td>
                       <td><?=substr($value['description'],0,150)."...";?></td>
                       <td><?=$value['nama'];?></td>
-                      <td>
-                        <a href="?menu=topik_edit&topic_id=<?=$value['topic_id']?>" title="edit"><span class="glyphicon glyphicon-edit"></span></a>
-                      </td>
+                      
                       <td>
                         <a href="?menu=delete&topic_id=<?=$value['topic_id']?>" onclick="return confirm('Anda yakin ingin menghapus data topik <?php echo $value['title']; ?>')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
                       </td>

@@ -48,6 +48,9 @@ switch ($menu) {
 	case 'comment':
 		include_once 'comment.php';
 		break;
+  case 'chatting':
+    include_once 'chatting.php';
+    break;
   case 'keluar':
     include_once 'keluar.php';
     break;

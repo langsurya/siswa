@@ -9,39 +9,37 @@
   <body>
     <?php include_once 'navbar.php'; ?>
 
-
-
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <?php include_once 'menu.php'; ?>
         </div>
-
+        <!-- /.sidebar -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
           <div class="col-sm-12">
-            <h2>Kategori</h2>
+            <h2>Chatting Member</h2>
             <hr>
           </div>
 
           <div id="loginbox" style="margin-top: ;" class="mainbox col-md-12">
+          <!-- pesan alert -->
+          <?php if (isset($_GET['msg'])): ?>
+            <?php if ($_GET['msg']=='delete'): ?>
+              
+            <div class="alert alert-success alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <h4><i class="icon fa fa-check"></i> Data berhasil di Hapus!</h4>
+            </div>            
+            <?php endif ?>
+          <?php endif ?>
+          <!-- /.alert -->
+
             <div class="panel panel-info">
               <div class="panel-heading">
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myKategori"><i class="glyphicon glyphicon-plus"></i>Tambah Data</button>
-                <div class="pull-right col-md-4">
-                  <form action="?menu=member_search" method="post">
-                    <div class="input-group">
-                      <input type="text" name="cari" class="form-control" placeholder="Ketik Kategori ..">
-                      <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default" type="button">
-                          <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                      </span>
-                    </div>
-                  </form>
-                </div>
-
+                <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-comment"></span> </a>
               </div>
+              <!-- /.panel-heading -->
               <div style="padding-top: 10px" class="panel-body">
                 <br/>
 
@@ -49,10 +47,9 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Kategori</th>
-                      <th>Kategori Ceo</th>
-                      <th>Status</th>
-                      <th>Created User</th>
+                      <th>Pengirim</th>
+                      <th>Chat</th>
+                      <th>Date Chat</th>
                       <th style="text-align: center;" colspan="2">Aksi</th>
                     </tr>
                   </thead>
@@ -61,8 +58,10 @@
                     include_once '../inc/class.php';
                     $siswa = new ClassSiswa;
                     $records_per_page=10;
-                    $query = "SELECT as_categories.*,as_user.user_id, as_user.full_name
-                    FROM as_categories, as_user WHERE as_categories.created_userid=as_user.user_id ORDER BY category_name ASC";
+                    $query = "SELECT as_message.*,
+                      as_members.member_id, as_members.first_name as nama
+                      FROM as_message
+                      JOIN as_members ON as_message.msgfrom = as_members.member_id";
                     $newquery = $siswa->paging($query,$records_per_page);
                     // penomoran halaman data pada halaman
                     if (isset($_GET['page_no'])) {
@@ -80,15 +79,12 @@
                     ?>
                     <tr style="text-align: center;">
                       <td><?=$no;?></td>
-                      <td><?=$value['category_name'];?></td>
-                      <td><?=$value['category_ceo'];?></td>
-                      <td><?=$value['status'];?></td>
-                      <td><?=$value['full_name'];?></td>
+                      <td><?=$value['nama'];?></td>
+                      <td><?=$value['message'];?></td>
+                      <td><?=$value['created_date'];?></td>
+                      
                       <td>
-                        <a href="?menu=kategori_edit&category_id=<?=$value['category_id']?>" title="edit"><span class="glyphicon glyphicon-edit"></span></a>
-                      </td>
-                      <td>
-                        <a href="?menu=delete&category_id=<?=$value['category_id']?>" onclick="return confirm('Anda yakin ingin menghapus data kategori <?php echo $value['category_name']; ?>')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
+                        <a href="?menu=delete&message_id=<?=$value['message_id']?>" onclick="return confirm('Anda yakin ingin menghapus data Chatting <?php echo $value['nama']; ?>')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
                       </td>
                     </tr>
 
@@ -105,6 +101,7 @@
                     </td>
                   </tr>
                 </table>
+                <!-- /.table -->
 
                 <?php
                  if (isset($_POST['btn-save'])) {
@@ -119,16 +116,16 @@
                    }
 
                  }
-                 include_once 'modal.php'; ?>
-
+                 ?>
               </div>
+              <!-- /.panel-body -->
             </div>
+            <!-- /.panel panel-info -->
           </div>
-
+          <!-- /.mainbox -->
         </div>
 
       </div>
-
     </div>
 
 
@@ -138,7 +135,6 @@
       <script src="../assets/js/bootstrap.min.js"></script>
       <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
       <script src="../assets/js/vendor/holder.min.js"></script>
-      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-      <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+      
     </body>
   </html>
