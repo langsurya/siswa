@@ -177,6 +177,22 @@ class ClassSiswa
 		}
   }
 
+  public function kirimPesan($nama,$email,$subjek,$pesan)
+  {
+    try {
+			$stmt = $this->conn->prepare('INSERT INTO as_contact(nama,email,subjek,pesan,created_date) VALUES(?,?,?,?,NOW())');
+			$stmt->bindParam(1,$nama);
+			$stmt->bindParam(2,$email);
+      $stmt->bindParam(3,$subjek);
+      $stmt->bindParam(4,$pesan);
+
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			return false;
+		}
+  }
+
   public function createMessage($msgfrom,$message)
   {
     try {
