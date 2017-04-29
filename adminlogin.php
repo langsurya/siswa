@@ -26,7 +26,7 @@ if (isset($_POST['login'])) {
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" href="images/logo.jpeg">
-	<title>SMK NEGERI 2 KOTA TANGERANG</title>
+	<title>Salt Water Aquarium</title>
 	<!-- Bootstrap CSS -->
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet" >
 	<!-- Style login css -->

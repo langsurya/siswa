@@ -27,6 +27,9 @@ switch ($menu) {
   case 'calculator':
     include_once 'calculator.php';
     break;
+  case 'contact':
+    include_once 'contact.php';
+    break;
 
 
   case 'profile':

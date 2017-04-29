@@ -18,7 +18,7 @@
 
 
       <div class="primary-head">
-				<h3 class="page-header">Home - <small>Metro Style Bootstrap Admin Dashboard</small></h3>
+				<h3 class="page-header">Home - <small>Sistem Informasi Salt Water Aquarium</small></h3>
 			</div>
       <ul class="breadcrumb">
 				<li><a href="#" class="icon-home active"></a><span class="divider "><i class="icon-angle-right"></i></span></li>
