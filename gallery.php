@@ -67,7 +67,6 @@ $(function(){
 					</div>
 					<ul class="breadcrumb">
 						<li><a href="#" class="icon-home"></a><span class="divider "><i class="icon-angle-right"></i></span></li>
-						<li><a href="#">Library</a><span class="divider"><i class="icon-angle-right"></i></span></li>
 						<li class="active">Gallery</li>
 					</ul>
 				</div>

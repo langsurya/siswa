@@ -29,6 +29,9 @@ switch ($menu) {
 	case 'read':
 		include_once 'read.php';
 		break;
+  case 'hitung-volume':
+    include_once 'calculator.php';
+    break;
 	case 'chat':
 		include_once 'chatting_forum.php';
 		break;
