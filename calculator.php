@@ -119,14 +119,10 @@
 								$diameter = $_POST['diameter'];
 								$diameter = $diameter/2;
 								$tinggi = $_POST['tinggi'];
-								echo "Volume = jari-jari x jari-jari x tinggi x (22/7)";
-								echo "<br>";
-								echo "Volume = (".($diameter/100) .' x '.($diameter/100) .' x '.($tinggi/100).') x '.'(22/7)';
-								echo "<br>";
-								echo "Volume = ".($jari2=(($diameter/100)*($diameter/100))*($tinggi/100)).' x '.round((22/7),2);
-								echo "<br>";
-								echo "Volume = ".($v = round(($jari2)*round((22/7),2),2)).' m<sup>3</sup>';
-								echo "<br>";
+								echo "Volume = jari-jari x jari-jari x tinggi x (22/7)<br>";
+								echo "Volume = (".($diameter/100) .' x '.($diameter/100) .' x '.($tinggi/100).') x '.'(22/7)<br>';
+								echo "Volume = ".($jari2=(($diameter/100)*($diameter/100))*($tinggi/100)).' x '.round((22/7),2)."<br>";
+								echo "Volume = ".($v = round(($jari2)*round((22/7),2),2)).' m<sup>3</sup><br>';
 								echo "Volume = ". ($v*1000).' Liter';
 							}elseif (isset($_POST['hitung_kubus'])) {
 								$panjang = $_POST['panjang'];
