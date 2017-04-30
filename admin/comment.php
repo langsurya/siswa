@@ -23,6 +23,18 @@
           </div>
 
           <div id="loginbox" style="margin-top: ;" class="mainbox col-md-12">
+            <!-- pesan alert -->
+            <?php if (isset($_GET['msg'])): ?>
+              <?php if ($_GET['msg']=='delete'): ?>
+                
+              <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-check"></i> Data Comment berhasil di Hapus!</h4>
+              </div>            
+              <?php endif ?>
+            <?php endif ?>
+            <!-- /.alert -->
+
             <div class="panel panel-info">
               <div class="panel-heading">
                 <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-comment"></span> </a>

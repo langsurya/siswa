@@ -1,5 +1,5 @@
 <?php
-// error_reporting(1);
+error_reporting(1);
 session_start();
 include_once '../inc/dbconfig.php';
 include_once '../inc/class.login.php';

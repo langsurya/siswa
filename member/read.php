@@ -29,7 +29,7 @@ $('textarea.tinymce-simple').tinymce({
 
 	<?php
   include_once 'navbar_top.php';
-	include_once 'navbar_l.php';
+	include_once 'sidebar.php';
 
   if (isset($_GET['topic_id'])) {
     $id = $_GET['topic_id'];
@@ -102,7 +102,7 @@ $('textarea.tinymce-simple').tinymce({
                     FROM as_comments
                     JOIN as_topics ON as_comments.topic_id = as_topics.topic_id
                     JOIN as_members ON as_comments.member_id = as_members.member_id
-                    WHERE as_comments.topic_id=$id";
+                    WHERE as_comments.topic_id=".$id;
           foreach ($siswa->showData($commentquery) as $value) {
             ?>
 					<div class="media">

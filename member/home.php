@@ -46,7 +46,7 @@
                       </li>
                     </ul>
 									<p>
-										<?=substr($value['description'],0,350)."...";?>
+										<?=strip_tags(substr($value['description'],0,350))."...";?>
 									</p>
 									<p>
                     <a class="btn btn-success" href="?menu=read&topic_id=<?=$value['topic_id'];?>">

@@ -29,5 +29,9 @@ elseif (!empty($_GET['message_id'])) {
 	$siswa->hapusData($_GET['message_id'],'as_message','message_id');
 	header('location:?menu=chatting&msg=delete');
 }
+elseif (!empty($_GET['contact_id'])) {
+	$siswa->hapusData($_GET['contact_id'],'as_contact','contact_id');
+	header('location:?menu=contact&msg=delete');
+}
 
 ?>

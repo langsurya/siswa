@@ -53,7 +53,7 @@
 
                 <div class="form-group">
                   <label for="pengirim">Pengirim</label>
-                  <input type="text" class="form-control" id="pengirim" value="<?=$nama;?>">
+                  <input type="text" disabled class="form-control" id="pengirim" value="<?=$nama;?>">
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
@@ -61,11 +61,11 @@
                 </div>
                 <div class="form-group">
                   <label for="subjek">Subjek</label>
-                  <input type="text" class="form-control" id="subjek" value="<?=$subjek;?>">
+                  <input type="text" disabled class="form-control" id="subjek" value="<?=$subjek;?>">
                 </div>
                 <div class="form-group">
                   <label for="pesan">Pesan</label>
-                  <textarea class="form-control" name="" id="" cols="30" rows="10"><?php echo strip_tags($pesan)?></textarea>
+                  <textarea class="form-control" disabled name="" id="" cols="30" rows="10"><?php echo strip_tags($pesan)?></textarea>
                 </div>
                 
                 <!-- /.table -->
