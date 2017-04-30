@@ -8,7 +8,7 @@
 
 	<?php
   include_once 'navbar_top.php';
-  include_once 'navbar_l.php';
+  include_once 'sidebar.php';
   ?>
   <!-- ./ -->
 	<div class="main-wrapper">
@@ -75,7 +75,7 @@
               <tr>
 								<td><?=substr($value['title'],0,30)."...";?></td>
 								<td><?=$value['nama'];?></td>
-								<td><?=substr($value['description'],0,150)."...";?></td>
+								<td><?=strip_tags(substr($value['description'],0,250))."...";?></td>
 								<td><?=$value['category_name'];?></td>
                 <td>
                   <a href="?menu=postEdit&topic_id=<?=$value['topic_id']?>" title="edit"><span class="icon-edit"></span></a>

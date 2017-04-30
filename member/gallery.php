@@ -53,7 +53,7 @@ $(function(){
 
 	<?php
   include_once 'navbar_top.php';
-	include_once 'navbar_l.php';
+	include_once 'sidebar.php';
 
   ?>
   <!-- ./ -->
@@ -88,7 +88,7 @@ $(function(){
 								<div class="caption">
 									<h5><?=$value['title'];?></h5>
 									<p>
-										<?=substr($value['description'],0,100)."...";?>
+										<?=strip_tags(substr($value['description'],0,100))."...";?>
 									</p>
 									<p>
 										<!-- <a class="btn btn-primary" href="#">Action</a>

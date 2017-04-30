@@ -33,7 +33,7 @@ $(function () {
 	<?php
 
   include_once 'navbar_top.php';
-  include_once 'navbar_l.php';
+  include_once 'sidebar.php';
 
   // $newquery = $siswa->paging($q_terkirim,$records_per_page);
   ?>
@@ -106,7 +106,7 @@ $(function () {
                     <div class="conversation <?=$class_div;?>">
                       <a href="#" class="<?=$a_class;?> media-thumb"><img src="<?=$img;?>" alt="user" width="34" height="34"></a>
                       <div class="conversation-body">
-                        <h4 class="conversation-heading"><?=$pesan['username'] . " : "?></h4>
+                        <h4 class="conversation-heading"><?=($pesan['username']=='') ? '</b>Member Tidak Aktif :</b>' : $pesan['username'] . " : "?> </h4>
                         <p>
                            <?=$pesan['message']. "".$pesan['created_date'];?>
                         </p>

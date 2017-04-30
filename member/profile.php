@@ -100,7 +100,7 @@ $('textarea.tinymce-simple').tinymce({
     extract($siswa->getData($id,$table,$key,''));
   }
   include_once 'navbar_top.php';
-	include_once 'navbar_l.php';
+	include_once 'sidebar.php';
   ?>
   <!-- ./ -->
 	<div class="main-wrapper">

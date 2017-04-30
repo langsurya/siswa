@@ -181,14 +181,14 @@ $(function() {
                       $siswa = new ClassSiswa;
                       $query = "SELECT * FROM as_categories";
                       foreach ($siswa->showData($query) as $value) {
-                        if ($value['category_id']==$category_id) {
-                          $s = "selected";
-                        }else {
-                          $s = "";
-                        }
+                        if ($value['status']=='N') {?>
+                          # jika status N maka kategori tidak ada
+                          <option value="<?=$value['category_id']?>" <?=($value['category_id']==$category_id) ? 'selected' : '' ?>><?=$value['category_name']?> (Kategori Sudah Tidak Ada)</option>
+                        <?php }else{
                         ?>
-                        <option value="<?=$value['category_id']?>" <?=$s;?>><?=$value['category_name']?></option>
+                        <option value="<?=$value['category_id']?>" <?=($value['category_id']==$category_id) ? 'selected' : '' ?>><?=$value['category_name']?></option>
                         <?php
+                      }
                       }
                       ?>
       							</select>

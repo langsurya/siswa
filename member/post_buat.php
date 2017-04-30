@@ -172,9 +172,14 @@ $(function() {
                       $siswa = new ClassSiswa;
                       $query = "SELECT * FROM as_categories";
                       foreach ($siswa->showData($query) as $value) {
+                        if ($value['status']=='N') {
+                          # jika setatus N maka kategori tidak akan muncul
+                        }else{
+                          # tapi jika Y maka  akan tampil
                         ?>
-                        <option value="<?=$value['category_id']?>"><?=$value['category_name']?></option>
+                          <option value="<?=$value['category_id']?>"><?=$value['category_name']?></option>
                         <?php
+                        }
                       }
                       ?>
       							</select>
