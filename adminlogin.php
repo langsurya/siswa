@@ -8,11 +8,6 @@ if (isset($_POST['login'])) {
     $password = $_POST['password'];
 
     $login->cekloginadmin($username,$password);
-    // if ($login->ceklogin($username,$password)) {
-    //     header('location: admin/');
-    // }else{
-    //     header('location: users/');
-    // }
 }
 
 ?>
@@ -25,7 +20,7 @@ if (isset($_POST['login'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="icon" href="images/logo.jpeg">
+	<link rel="icon" href="member/ico/salt.png">
 	<title>Salt Water Aquarium</title>
 	<!-- Bootstrap CSS -->
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet" >

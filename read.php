@@ -30,7 +30,7 @@ $('textarea.tinymce-simple').tinymce({
 	<?php
   error_reporting(1);
   include_once 'member/navbar_top.php';
-	include_once 'navbar_login.php';
+	include_once 'sidebar.php';
 
   if (isset($_GET['topic_id'])) {
     $id = $_GET['topic_id'];

@@ -53,7 +53,7 @@ $(function(){
 
 	<?php
   include_once 'member/navbar_top.php';
-	include_once 'navbar_login.php';
+	include_once 'sidebar.php';
 
   ?>
   <!-- ./ -->
