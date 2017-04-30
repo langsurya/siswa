@@ -4,8 +4,8 @@ include_once 'inc/class.login.php';
 $login = new login($DB_con);
 
 if (isset($_POST['login'])) {
-    echo $username = $_POST['username'];
-    echo $password = $_POST['password'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
     $login->cekloginadmin($username,$password);
     // if ($login->ceklogin($username,$password)) {
