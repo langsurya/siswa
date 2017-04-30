@@ -33,5 +33,9 @@ elseif (!empty($_GET['contact_id'])) {
 	$siswa->hapusData($_GET['contact_id'],'as_contact','contact_id');
 	header('location:?menu=contact&msg=delete');
 }
+elseif (!empty($_GET['schedule_id'])) {
+	$siswa->hapusData($_GET['schedule_id'],'as_schedule','schedule_id');
+	header('location:?menu=schedule&msg=delete');
+}
 
 ?>

@@ -54,7 +54,7 @@
           <form method="post" enctype="multipart/form-data">
             <div class="form-group">
               <label>Tanggal</label>
-              <input type="text" name="tanggal" class="form-control" value="<?=date('Y-m-d');?>">
+              <input type="date" name="tanggal" class="form-control" placeholder="tahun-bln-tgl">
             </div>
             <div class="form-group">
               <label>Kegiatan</label>
