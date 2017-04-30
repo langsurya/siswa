@@ -9,4 +9,5 @@
   <li><a href="?menu=topik"><i class="glyphicon glyphicon-paperclip"></i> Topik</a></li>
   <li><a href="?menu=comment"><i class="glyphicon glyphicon-comment"></i> Comment</a></li>
   <li><a href="?menu=chatting"><i class="glyphicon glyphicon-list-alt"></i> Chating Member</a></li>
+  <li><a href="?menu=contact"><i class="glyphicon glyphicon-envelope"></i> Contact Me</a></li>
 </ul>

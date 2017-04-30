@@ -14,7 +14,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-          <?php include_once 'menu.php'; ?>
+          <?php include_once 'sidebar.php'; ?>
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -28,19 +28,6 @@
             <div class="panel panel-info">
               <div class="panel-heading">
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myUser"><i class="glyphicon glyphicon-plus"></i>Tambah User</button>
-                <!-- <a class="btn btn-success" href="?menu=siswa_input"><span class="glyphicon glyphicon-plus"></span> Tambah User</a> -->
-                <div class="pull-right col-md-4">
-                  <form action="?menu=user_search" method="post">
-                    <div class="input-group">
-                      <input type="text" name="cari" class="form-control" placeholder="Ketik Nama User ..">
-                      <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default" type="button">
-                          <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                      </span>
-                    </div>
-                  </form>
-                </div>
 
               </div>
               <div style="padding-top: 10px" class="panel-body">
@@ -53,7 +40,7 @@
                       <th>Nama</th>
                       <th>Username</th>
                       <th>Password</th>
-                      <th>No Hp</th>
+                      <th>Blocked</th>
                       <th>Email</th>
                       <th>Level</th>
                       <th style="text-align: center;" colspan="2">Aksi</th>
@@ -85,7 +72,7 @@
                       <td><?=$value['full_name'];?></td>
                       <td><?=$value['username'];?></td>
                       <td><?=md5($value['password']);?></td>
-                      <td><?=$value['phone'];?></td>
+                      <td><?=$value['blocked'];?></td>
                       <td><?=$value['email'];?></td>
                       <td><?=$value['level'];?></td>
                       <td>

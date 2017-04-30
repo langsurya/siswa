@@ -12,7 +12,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-          <?php include_once 'menu.php'; ?>
+          <?php include_once 'sidebar.php'; ?>
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -190,12 +190,11 @@
                   </div>
                   <div class="form-group">
                     <label for="alamat">Alamat:</label>
-                    <input type="text" name="alamat" class="form-control" id="alamat" value="<?=$alamat;?>">
+                    <input type="text" name="alamat" class="form-control" id="alamat" value="<?=strip_tags($alamat);?>">
                   </div>
                   <div class="form-group">
                     <label for="comment">Bio:</label>
-                    <textarea class="form-control" name="biografi" rows="5" id="comment" value=<?=$biografi;?>><?=$biografi;?></textarea>
-                    <!-- <input type="text" name="bio" class="form-control" id="bio" value="<?=$biografi;?>"> -->
+                    <textarea class="form-control" name="biografi" rows="5" id="comment"><?=strip_tags($biografi);?></textarea>
                   </div>
 
 

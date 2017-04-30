@@ -12,7 +12,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-          <?php include_once 'menu.php'; ?>
+          <?php include_once 'sidebar.php'; ?>
         </div>
         <!-- /.sidebar -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -61,7 +61,7 @@
                     $query = "SELECT as_message.*,
                       as_members.member_id, as_members.first_name as nama
                       FROM as_message
-                      JOIN as_members ON as_message.msgfrom = as_members.member_id";
+                      LEFT JOIN as_members ON as_message.msgfrom = as_members.member_id";
                     $newquery = $siswa->paging($query,$records_per_page);
                     // penomoran halaman data pada halaman
                     if (isset($_GET['page_no'])) {
@@ -79,7 +79,7 @@
                     ?>
                     <tr style="text-align: center;">
                       <td><?=$no;?></td>
-                      <td><?=$value['nama'];?></td>
+                      <td><?=($value['nama']=='') ? '<b>Member Tidak Aktif</b>' : $value['nama']; ?></td>
                       <td><?=$value['message'];?></td>
                       <td><?=$value['created_date'];?></td>
                       

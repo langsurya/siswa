@@ -12,7 +12,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-          <?php include_once 'menu.php'; ?>
+          <?php include_once 'sidebar.php'; ?>
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -98,7 +98,11 @@
                   </div>
                   <div class="form-group">
                     <label for="lvl">Level:</label>
-                    <input type="text" name="level" class="form-control" id="lvl" value="<?=$level;?>">
+                    <select name="level" id="" class="form-control">
+                      <option value="">Pulih Level</option>
+                      <option value="admin" <?php echo ($level == 'admin') ? 'selected' : ''; ?>>Admin</option>
+                      <option value="user" <?php echo ($level == 'user') ? 'selected' : ''; ?>>User</option>
+                    </select>
                   </div>
                   <div class="form-group">
                 		<label>Blocked:</label><br/>

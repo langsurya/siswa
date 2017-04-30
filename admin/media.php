@@ -1,5 +1,8 @@
 <?php
 session_start();
+include_once '../inc/dbconfig.php';
+include_once '../inc/class.php';
+$siswa = new ClassSiswa;
 if (isset($_SESSION['username'])==0) {
 	header('Location: ../');
 }
@@ -50,6 +53,12 @@ switch ($menu) {
 		break;
   case 'chatting':
     include_once 'chatting.php';
+    break;
+  case 'contact':
+    include_once 'contact.php';
+    break;
+  case 'contact_view':
+    include_once 'contact_view.php';
     break;
   case 'keluar':
     include_once 'keluar.php';

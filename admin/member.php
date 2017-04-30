@@ -12,7 +12,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-          <?php include_once 'menu.php'; ?>
+          <?php include_once 'sidebar.php'; ?>
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -26,19 +26,6 @@
             <div class="panel panel-info">
               <div class="panel-heading">
                 <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-user"></span> </a>
-                <div class="pull-right col-md-4">
-                  <form  action="?menu=member_search" method="post">
-                    <div class="input-group">
-                      <input type="text" name="cari" class="form-control" placeholder="Ketik Nama Member ..">
-                      <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default" type="button">
-                          <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                      </span>
-                    </div>
-                  </form>
-                </div>
-
               </div>
               <div style="padding-top: 10px" class="panel-body">
                 <br/>

@@ -14,19 +14,32 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <?php include_once 'sidebar.php'; ?>
         </div>
-
+        <!-- /.sidebar -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
           <div class="col-sm-12">
-            <h2>Comment</h2>
+            <h2>Pesan Pengunjung</h2>
             <hr>
           </div>
 
           <div id="loginbox" style="margin-top: ;" class="mainbox col-md-12">
+          <!-- pesan alert -->
+          <?php if (isset($_GET['msg'])): ?>
+            <?php if ($_GET['msg']=='delete'): ?>
+              
+            <div class="alert alert-success alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <h4><i class="icon fa fa-check"></i> Data berhasil di Hapus!</h4>
+            </div>            
+            <?php endif ?>
+          <?php endif ?>
+          <!-- /.alert -->
+
             <div class="panel panel-info">
               <div class="panel-heading">
-                <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-comment"></span> </a>
+                <a class="btn btn-success" href="#"><span class="glyphicon glyphicon-envelope"></span> </a>
               </div>
+              <!-- /.panel-heading -->
               <div style="padding-top: 10px" class="panel-body">
                 <br/>
 
@@ -34,10 +47,11 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Topics</th>
-                      <th>Member</th>
-                      <th>Description</th>
-                      <th>Date Comment</th>
+                      <th>Pengirim</th>
+                      <th>Email</th>
+                      <th>Subjek</th>
+                      <th>Pesan</th>
+                      <th>Date Chat</th>
                       <th style="text-align: center;" colspan="2">Aksi</th>
                     </tr>
                   </thead>
@@ -46,12 +60,7 @@
                     include_once '../inc/class.php';
                     $siswa = new ClassSiswa;
                     $records_per_page=10;
-                    $query = "SELECT as_comments.*,
-                              as_members.member_id, as_members.first_name as nama,
-                              as_topics.topic_id, as_topics.title
-                              FROM as_comments
-                              LEFT JOIN as_members ON as_comments.member_id = as_members.member_id
-                              LEFT JOIN as_topics ON as_comments.topic_id = as_topics.topic_id";
+                    $query = "SELECT * FROM as_contact";
                     $newquery = $siswa->paging($query,$records_per_page);
                     // penomoran halaman data pada halaman
                     if (isset($_GET['page_no'])) {
@@ -69,13 +78,16 @@
                     ?>
                     <tr style="text-align: center;">
                       <td><?=$no;?></td>
-                      <td><?=$value['title'];?></td>
-                      <td><?=($value['nama']=='') ? '<b>Member Tidak Aktif/Ada</b>' : $value['nama'];?></td>
-                      <td><?=strip_tags(substr($value['description'],0,100))."...";?></td>
+                      <td><?=$value['nama'];?></td>
+                      <td><?=$value['email'];?></td>
+                      <td><?=$value['subjek'];?></td>
+                      <td><?=$value['pesan'];?></td>
                       <td><?=$value['created_date'];?></td>
                       
                       <td>
-                        <a href="?menu=delete&comment_id=<?=$value['comment_id']?>" onclick="return confirm('Anda yakin ingin menghapus data Comment <?php echo $value['title']; ?>')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
+                      <a href="?menu=contact_view&contact_id=<?=$value['contact_id']?>" title="Lihat Pesan Pengunjung"><span class="glyphicon glyphicon-eye-open"></span></a>
+
+                        <a href="?menu=delete&contact_id=<?=$value['contact_id']?>" onclick="return confirm('Anda yakin ingin menghapus Pesan <?php echo $value['nama']; ?>')" title="Hapus"><span class="glyphicon glyphicon-remove"></span></a>
                       </td>
                     </tr>
 
@@ -92,6 +104,7 @@
                     </td>
                   </tr>
                 </table>
+                <!-- /.table -->
 
                 <?php
                  if (isset($_POST['btn-save'])) {
@@ -107,15 +120,15 @@
 
                  }
                  ?>
-
               </div>
+              <!-- /.panel-body -->
             </div>
+            <!-- /.panel panel-info -->
           </div>
-
+          <!-- /.mainbox -->
         </div>
 
       </div>
-
     </div>
 
 
