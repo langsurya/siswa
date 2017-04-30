@@ -42,7 +42,9 @@ $('textarea.tinymce-simple').tinymce({
     $subjek = $_POST['subjek'];
     $pesan = $_POST['pesan'];
     if ($siswa->kirimPesan($nama,$email,$subjek,$pesan)) {
-      header('location:?menu=contact&msg=success');
+      echo "<script>alert('Pesan berhasil Dikirim');</script>";
+      echo "<meta http-equiv='refresh' content='0; url=?menu=contact&msg=success'>";
+      // header('location:?menu=contact&msg=success');
     }
   }
   include_once 'member/navbar_top.php';

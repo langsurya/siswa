@@ -49,9 +49,23 @@ class login {
           $_SESSION['user_id'] = $row['user_id'];
 					$_SESSION['full_name'] = $row['full_name'];
 					$_SESSION['level'] = $row['level'];
-					if ($row['level']=='admin') {
-					header("Location: admin/");
-					return;
+					$_SESSION['blocked'] = $row['blocked'];
+					if ($_SESSION['blocked']=='Y') {
+						echo "<script>alert('Akun Anda Tidak Bisa Di Block Silahkan hubungi Admin');</script>";
+						echo "<meta http-equiv='refresh' content='0; url=index.php'>";
+						session_destroy();
+					}elseif ($_SESSION['blocked']=='N') {
+						if ($_SESSION['level']!='admin') {
+							echo "<script>alert('Silahkan Login Sebagai Admininstrator');</script>";
+							echo "<meta http-equiv='refresh' content='0; url=index.php'>";
+							session_destroy();
+						}else{
+							if ($row['level']=='admin') {
+							echo "<script>alert('Berhasil Login Sebagai Admininstrator');</script>";
+							header("Location: admin/");
+							return;
+							}							
+						}
 					}
 				}
 			}
