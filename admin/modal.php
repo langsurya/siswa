@@ -40,6 +40,42 @@
     </div>
   </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="mySchedule" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Tambah Schedule</h4>
+        </div>
+        <div class="modal-body">
+          <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <label>Tanggal</label>
+              <input type="text" name="tanggal" class="form-control" value="<?=date('Y-m-d');?>">
+            </div>
+            <div class="form-group">
+              <label>Kegiatan</label>
+              <textarea class="form-control" name="kegiatan" id="" cols="30" rows="5"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Lokasi</label>
+              <input type="text" name="lokasi" class="form-control">
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+              <input type="submit" name="btn-save" class="btn btn-primary" value="Simpan">
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 
 
   <!-- Modal myKota -->

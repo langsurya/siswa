@@ -29,10 +29,18 @@
 				<div class="span12">
 
 	        <select class="span6" name="" id="" onchange="changeValue(this.value)">
-          	<option value="">Pilih Perhitungan</option>
-          	<option value="silinder" <?=($_GET['pilih']=='silinder') ? 'selected' : '' ;?> >Volume Tangki Air berbentuk Silinder / Tabung</option>
-          	<option value="kubus" <?=($_GET['pilih']=='kubus') ? 'selected' : '' ;?> >Volume Bak Penampung berbentuk Kubus / Segiempat</option>
-            <option value="konvensional" <?=($_GET['pilih']=='konvensional') ? 'selected' : '' ;?> >Volume Bak Penampung berbentuk Kubus / Segiempat (Konvensional)</option>
+          	<option value="">Pilih Perhitungan</option>              
+            <?php if (isset($_GET['pilih'])): ?>          
+              <!-- jika get pilih sudah diset maka tampilkan option di bawah ini -->
+              <option value="silinder" <?=($_GET['pilih']=='silinder') ? 'selected' : '' ;?> >Volume Tangki Air berbentuk Silinder / Tabung</option>
+              <option value="kubus" <?=($_GET['pilih']=='kubus') ? 'selected' : '' ;?> >Volume Bak Penampung berbentuk Kubus / Segiempat</option>
+              <option value="konvensional" <?=($_GET['pilih']=='konvensional') ? 'selected' : '' ;?> >Volume Bak Penampung berbentuk Kubus / Segiempat (Konvensional)</option>
+            <?php else: ?>
+              <!-- jika GET pilih belum diset maka tampilkan option di bawah ini -->
+              <option value="silinder">Volume Tangki Air berbentuk Silinder / Tabung</option>
+              <option value="kubus">Volume Bak Penampung berbentuk Kubus / Segiempat</option>
+              <option value="konvensional">Volume Bak Penampung berbentuk Kubus / Segiempat (Konvensional)</option>
+            <?php endif ?>
           </select>
           <!-- /.select -->
           <div class="content-widgets gray">
@@ -43,91 +51,91 @@
             <div class="widget-container">
             
 							<?php if (isset($_GET['pilih'])): ?>
-							<?php if ($_GET['pilih']=='silinder'): ?>
-      				<form action="" method="POST" class="form-horizontal">
-      					<div class="control-group">
-      						<label class="control-label">Diameter:</label>
-      						<div class="controls">
-      							<input name="diameter" placeholder="Hitung Per CM" class="span12" type="text">
-      						</div>
-      					</div>
-      					<!-- ./control-group -->
-                <div class="control-group">
-      						<label class="control-label">Tinggi:</label>
-      						<div class="controls">
-      							<input name="tinggi" placeholder="Hitung Tinggi per CM" class="span12" type="text">
-      						</div>
-      					</div>
-                <!-- ./control-group -->
-                <input type="hidden" name="member_id" value="">
-      					<div class="form-actions">
-      						<button name="hitung_silinder" type="submit" class="btn btn-success">Hitung</button>
-      						<button type="button" class="btn">Batal</button>
-      					</div>
-      					<!-- ./form-actions -->
-      				</form>			
-      													
-      				<?php elseif($_GET['pilih']=='kubus'): ?>
-								<form action="" method="POST" class="form-horizontal">
-      					<div class="control-group">
-      						<label class="control-label">Panjang:</label>
-      						<div class="controls">
-      							<input name="panjang" placeholder="Hitung Per CM" class="span12" type="text">
-      						</div>
-      					</div>
-      					<!-- ./control-group -->
-      					<div class="control-group">
-      						<label class="control-label">Lebar:</label>
-      						<div class="controls">
-      							<input name="lebar" placeholder="Hitung Per CM" class="span12" type="text">
-      						</div>
-      					</div>
-      					<!-- ./control-group -->
-                <div class="control-group">
-      						<label class="control-label">Tinggi:</label>
-      						<div class="controls">
-      							<input name="tinggi" placeholder="Hitung Tinggi per CM" class="span12" type="text">
-      						</div>
-      					</div>
-                <!-- ./control-group -->
-                <input type="hidden" name="member_id" value="">
-      					<div class="form-actions">
-      						<button name="hitung_kubus" type="submit" class="btn btn-success">Hitung</button>
-      						<button type="button" class="btn">Batal</button>
-      					</div>
-      					<!-- ./form-actions -->
-      				</form>
-              <?php elseif($_GET['pilih']=='konvensional'): ?>
-              <form action="" method="POST" class="form-horizontal">
-                <div class="control-group">
-                  <label class="control-label">Panjang:</label>
-                  <div class="controls">
-                    <input name="panjang" placeholder="Hitung Per CM" class="span12" type="text">
+  							<?php if ($_GET['pilih']=='silinder'): ?>
+        				<form action="" method="POST" class="form-horizontal">
+        					<div class="control-group">
+        						<label class="control-label">Diameter:</label>
+        						<div class="controls">
+        							<input name="diameter" placeholder="Hitung Per CM" class="span12" type="text">
+        						</div>
+        					</div>
+        					<!-- ./control-group -->
+                  <div class="control-group">
+        						<label class="control-label">Tinggi:</label>
+        						<div class="controls">
+        							<input name="tinggi" placeholder="Hitung Tinggi per CM" class="span12" type="text">
+        						</div>
+        					</div>
+                  <!-- ./control-group -->
+                  <input type="hidden" name="member_id" value="">
+        					<div class="form-actions">
+        						<button name="hitung_silinder" type="submit" class="btn btn-success">Hitung</button>
+        						<button type="button" class="btn">Batal</button>
+        					</div>
+        					<!-- ./form-actions -->
+        				</form>			
+        													
+        				<?php elseif($_GET['pilih']=='kubus'): ?>
+  							<form action="" method="POST" class="form-horizontal">
+        					<div class="control-group">
+        						<label class="control-label">Panjang:</label>
+        						<div class="controls">
+        							<input name="panjang" placeholder="Hitung Per CM" class="span12" type="text">
+        						</div>
+        					</div>
+        					<!-- ./control-group -->
+        					<div class="control-group">
+        						<label class="control-label">Lebar:</label>
+        						<div class="controls">
+        							<input name="lebar" placeholder="Hitung Per CM" class="span12" type="text">
+        						</div>
+        					</div>
+        					<!-- ./control-group -->
+                  <div class="control-group">
+        						<label class="control-label">Tinggi:</label>
+        						<div class="controls">
+        							<input name="tinggi" placeholder="Hitung Tinggi per CM" class="span12" type="text">
+        						</div>
+        					</div>
+                  <!-- ./control-group -->
+                  <input type="hidden" name="member_id" value="">
+        					<div class="form-actions">
+        						<button name="hitung_kubus" type="submit" class="btn btn-success">Hitung</button>
+        						<button type="button" class="btn">Batal</button>
+        					</div>
+        					<!-- ./form-actions -->
+        				</form>
+                <?php elseif($_GET['pilih']=='konvensional'): ?>
+                <form action="" method="POST" class="form-horizontal">
+                  <div class="control-group">
+                    <label class="control-label">Panjang:</label>
+                    <div class="controls">
+                      <input name="panjang" placeholder="Hitung Per CM" class="span12" type="text">
+                    </div>
                   </div>
-                </div>
-                <!-- ./control-group -->
-                <div class="control-group">
-                  <label class="control-label">Lebar:</label>
-                  <div class="controls">
-                    <input name="lebar" placeholder="Hitung Per CM" class="span12" type="text">
+                  <!-- ./control-group -->
+                  <div class="control-group">
+                    <label class="control-label">Lebar:</label>
+                    <div class="controls">
+                      <input name="lebar" placeholder="Hitung Per CM" class="span12" type="text">
+                    </div>
                   </div>
-                </div>
-                <!-- ./control-group -->
-                <div class="control-group">
-                  <label class="control-label">Tinggi:</label>
-                  <div class="controls">
-                    <input name="tinggi" placeholder="Hitung Tinggi per CM" class="span12" type="text">
+                  <!-- ./control-group -->
+                  <div class="control-group">
+                    <label class="control-label">Tinggi:</label>
+                    <div class="controls">
+                      <input name="tinggi" placeholder="Hitung Tinggi per CM" class="span12" type="text">
+                    </div>
                   </div>
-                </div>
-                <!-- ./control-group -->
-                <input type="hidden" name="member_id" value="">
-                <div class="form-actions">
-                  <button name="hitung_konvensional" type="submit" class="btn btn-success">Hitung</button>
-                  <button type="button" class="btn">Batal</button>
-                </div>
-                <!-- ./form-actions -->
-              </form>
-							<?php endif ?>
+                  <!-- ./control-group -->
+                  <input type="hidden" name="member_id" value="">
+                  <div class="form-actions">
+                    <button name="hitung_konvensional" type="submit" class="btn btn-success">Hitung</button>
+                    <button type="button" class="btn">Batal</button>
+                  </div>
+                  <!-- ./form-actions -->
+                </form>
+  							<?php endif ?>
 							<?php endif ?>
       			</div>
 						<!-- /.widget-container -->

@@ -18,6 +18,10 @@ switch ($menu) {
     include_once 'user_edit.php';
     break;
 
+  case 'schedule':
+    include_once 'schedule.php';
+    break;
+
   case 'member':
     include_once 'member.php';
     break;

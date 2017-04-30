@@ -95,6 +95,21 @@ class ClassSiswa
 		}
   }
 
+  public function createSchedule($tanggal,$kegiatan,$lokasi)
+  {
+    try {
+			$stmt = $this->conn->prepare('INSERT INTO as_schedule(tanggal,kegiatan,lokasi) VALUES(?,?,?)');
+			$stmt->bindParam(1,$tanggal);
+			$stmt->bindParam(2,$kegiatan);
+      $stmt->bindParam(3,$lokasi);
+
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			return false;
+		}
+  }
+
   public function create_provinsi($province_name,$status,$created_userid)
   {
     try {
