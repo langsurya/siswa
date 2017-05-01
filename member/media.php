@@ -35,6 +35,12 @@ switch ($menu) {
 	case 'chat':
 		include_once 'chatting_forum.php';
 		break;
+  case 'schedule':
+    include_once 'schedule.php';
+    break;
+  case 'scheduleShow':
+    include_once 'scheduleShow.php';
+    break;
 
 	case 'gallery':
 		include_once 'gallery.php';

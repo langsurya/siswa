@@ -68,7 +68,7 @@ $(function() {
 	<?php
   
   include_once 'navbar_top.php';
-  include_once 'navbar_l.php';
+  include_once 'sidebar.php';
 
   if (isset($_POST['save-topics'])) {
     $title = $_POST['title'];
