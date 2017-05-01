@@ -21,6 +21,9 @@ switch ($menu) {
   case 'schedule':
     include_once 'schedule.php';
     break;
+  case 'schedule_edit':
+    include_once 'schedule_edit.php';
+    break;
 
   case 'member':
     include_once 'member.php';

@@ -329,6 +329,26 @@ class ClassSiswa
 		}
 	}
 
+	public function updateSchedule($id,$tanggal,$kegiatan,$lokasi)
+	{
+		try {
+			$stmt = $this->conn->prepare("UPDATE as_schedule
+        SET tanggal=:tanggal, kegiatan=:kegiatan, lokasi=:lokasi
+        WHERE schedule_id=:schedule_id");
+
+			$stmt->bindparam(":schedule_id",$id);
+			$stmt->bindparam(":tanggal",$tanggal);
+			$stmt->bindparam(":kegiatan",$kegiatan);
+			$stmt->bindparam(":lokasi",$lokasi);
+
+			$stmt->execute();
+			return true;
+		} catch (PDOException $e) {
+			echo $e->getMessage();
+			return false;
+		}
+	}
+
   public function updateKota($id,$province_id,$city_name,$city_code,$status)
 	{
 		try {
